@@ -12,27 +12,57 @@
 <vnodes>
 <v t="zoomq.20110821191131.2934"><vh>@chapters</vh></v>
 <v t="zoomq.20070122144132" a="E"><vh>ScrapBook tools</vh>
-<v t="zoomq.20110821191131.2957"><vh>readme.txt</vh>
+<v t="zoomq.20110821191131.2957" a="E"><vh>readme.txt</vh>
 <v t="zoomq.20140226204618.4705"><vh>&lt;&lt;scan&gt;&gt;</vh></v>
 <v t="zoomq.20110821191131.2959"><vh>root</vh></v>
 <v t="zoomq.20110821191131.2958"><vh>node</vh></v>
 <v t="zoomq.20110821191131.2960"><vh>separator</vh></v>
 <v t="zoomq.20110821191131.2961"><vh>URI</vh></v>
 </v>
-<v t="zoomq.20110821191131.5287"><vh>@nosent chkscrap.py</vh>
+<v t="zoomq.20110821191131.5287" a="E"><vh>@nosent zq_chk4scrap.py</vh>
+<v t="zoomq.20140708152848.3467"><vh>&lt;&lt;__main__&gt;&gt;</vh></v>
+<v t="zoomq.20140708152848.3469"><vh>&lt;&lt;click&gt;&gt;</vh></v>
+<v t="zoomq.20140708152848.3468"><vh>&lt;&lt;version&gt;&gt;</vh></v>
 <v t="zoomq.20110821191131.5288"><vh>&lt;&lt;imports&gt;&gt;</vh></v>
 <v t="zoomq.20110821191131.5295"><vh>&lt;&lt;define&gt;&gt;</vh>
-<v t="zoomq.20110821191131.5296"><vh>&lt;&lt;configures&gt;&gt;</vh></v>
+<v t="zoomq.20110821191131.5296" a="E"><vh>&lt;&lt;configures&gt;&gt;</vh>
+<v t="zoomq.20140708152848.3475" a="E"><vh>模板</vh>
+<v t="zoomq.20140708152848.3482"><vh>&lt;&lt;TPL_NC&gt;&gt;</vh></v>
+<v t="zoomq.20140708152848.3483"><vh>&lt;&lt;TPL_NOTE&gt;&gt;</vh></v>
+<v t="zoomq.20140708152848.3481"><vh>&lt;&lt;TPL_URI&gt;&gt;</vh></v>
+<v t="zoomq.20140708152848.3480"><vh>&lt;&lt;TPL_FOLDER&gt;&gt;</vh></v>
+<v t="zoomq.20140708152848.3479"><vh>&lt;&lt;TPL_LI&gt;&gt;</vh></v>
+<v t="zoomq.20140708152848.3478"><vh>&lt;&lt;TPL_SEQ&gt;&gt;</vh></v>
+<v t="zoomq.20140708152848.3477"><vh>&lt;&lt;TPL_ROOT&gt;&gt;</vh></v>
+<v t="zoomq.20140708152848.3476"><vh>&lt;&lt;TPL_BODY&gt;&gt;</vh></v>
+</v>
+</v>
 </v>
 <v t="zoomq.20140226204618.4732"><vh>run_time(func)</vh></v>
-<v t="zoomq.20140226204618.4733"><vh>exp_level_idx(pathto)</vh>
-<v t="zoomq.20140226204618.4734"><vh>start_element</vh></v>
+<v t="zoomq.20140708152848.3470"><vh>_load_pkl(REPO_NAME)</vh></v>
+<v t="zoomq.20140226204618.4742"><vh>chk_data_dir()</vh></v>
+<v t="zoomq.20140226204618.4733" a="E"><vh>exp_level_idx(pathto)</vh>
+<v t="zoomq.20140708152848.3487"><vh> &lt;&lt;xmltodict.parse&gt;&gt;</vh></v>
+<v t="zoomq.20140708152848.3486"><vh> &lt;&lt;untangle.parse&gt;&gt;</vh></v>
+<v t="zoomq.20140708152848.3485"><vh>&lt;&lt;xml.parsers.expat&gt;&gt;</vh>
+<v t="zoomq.20140226204618.4734"><vh>start_element</vh>
+<v t="zoomq.20140708152848.3464"><vh> &lt;&lt;RDF:Description&gt;&gt;</vh></v>
+<v t="zoomq.20140708152848.3463"><vh>&lt;&lt;RDF:li&gt;&gt;</vh></v>
+<v t="zoomq.20140708152848.3462"><vh>&lt;&lt;RDF:Seq&gt;&gt;</vh></v>
+</v>
 <v t="zoomq.20140226204618.4735"><vh>end_element</vh></v>
 </v>
-<v t="zoomq.20140226204618.4742"><vh>chk_data_dir()</vh></v>
-<v t="zoomq.20140226204618.4746"><vh>chk_data_ids(expath,drdf)</vh></v>
 </v>
-<v t="zoomq.20140226204618.4757" a="E"><vh>@nosent scrap_re_rdf.py</vh>
+<v t="zoomq.20140708152848.3488" a="E"><vh>re_xmltodict_rdf()</vh>
+<v t="zoomq.20140708152848.3489"><vh>&lt;&lt;_walk_rdf_tree&gt;&gt;</vh></v>
+</v>
+<v t="zoomq.20140226204618.4746"><vh>chk_data_ids(expath,drdf)</vh></v>
+<v t="zoomq.20140708152848.3466" a="E"><vh>exp_rdf_tree(expath,drdf)</vh>
+<v t="zoomq.20140708152848.3472"><vh>&lt;&lt;_diff_show_tree&gt;&gt;</vh></v>
+<v t="zoomq.20140708152848.3471"><vh>&lt;&lt;_exp_txt_tree&gt;&gt;</vh></v>
+</v>
+</v>
+<v t="zoomq.20140226204618.4757"><vh>@nosent scrap_re_rdf.py</vh>
 <v t="zoomq.20140226204618.4758"><vh>&lt;&lt;imports&gt;&gt;</vh></v>
 <v t="zoomq.20140226204618.4759" a="E"><vh>&lt;&lt;define&gt;&gt;</vh>
 <v t="zoomq.20140226204618.4760" a="E"><vh>&lt;&lt;configures&gt;&gt;</vh>
@@ -45,7 +75,7 @@
 <v t="zoomq.20140226204618.4764"><vh>end_element</vh></v>
 </v>
 <v t="zoomq.20140226204618.4765"><vh>chk_data_dir()</vh></v>
-<v t="zoomq.20140226204618.4766" a="E"><vh>chk_data_ids(expath,drdf)</vh>
+<v t="zoomq.20140226204618.4766"><vh>chk_data_ids(expath,drdf)</vh>
 <v t="zoomq.20140226204618.4876" a="E"><vh>&lt;&lt;gen_seqs&gt;&gt;</vh>
 <v t="zoomq.20140226204618.4877"><vh>&lt;&lt;gen_seq&gt;&gt;</vh></v>
 </v>
@@ -55,7 +85,7 @@
 </v>
 </v>
 </v>
-<v t="zoomq.20140226204618.4724" a="E"><vh>@nosent expidxlevels.py</vh>
+<v t="zoomq.20140226204618.4724"><vh>@nosent expidxlevels.py</vh>
 <v t="zoomq.20140226204618.4725"><vh>&lt;&lt;imports&gt;&gt;</vh></v>
 <v t="zoomq.20140226204618.4726" a="E"><vh>&lt;&lt;define&gt;&gt;</vh>
 <v t="zoomq.20140226204618.4727"><vh>&lt;&lt;configures&gt;&gt;</vh>
@@ -66,7 +96,7 @@
 </v>
 </v>
 <v t="zoomq.20140226204618.4732"></v>
-<v t="zoomq.20140226204618.4733"></v>
+<v t="zoomq.20140226204618.4733" a="E"></v>
 <v t="zoomq.20140226204618.4736"><vh>exp_root_idx(expath,drdf)</vh></v>
 <v t="zoomq.20140226204618.4737"><vh>exp_sub_idx(rdf,rootseq)</vh></v>
 <v t="zoomq.20140226204618.4738"><vh>exp_if_tree(rdf,rootseq)</vh></v>
@@ -83,8 +113,10 @@
 <v t="zoomq.20080404224002"><vh>title()</vh></v>
 </v>
 </v>
-<v t="zoomq.20110825085230.2985"><vh>scrapbook:output.js</vh></v>
+<v t="zoomq.20140708152848.3473"><vh>_chaos</vh>
 <v t="zoomq.20110825085230.2984"><vh>@nosent demoyield.py</vh></v>
+<v t="zoomq.20110825085230.2985"><vh>scrapbook:output.js</vh></v>
+</v>
 <v t="zoomq.20110821191131.2956"><vh>tpl</vh></v>
 </v>
 </vnodes>
@@ -324,29 +356,29 @@ collected pages ==  30874
 @tabwidth -4
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-VERSION = "chkscrap.py v14.02.27"
+'''主要检查行为:
+-D 是否加载上次已经分析的对象树
+-diff 对比 rdf 和 目录 的节点数量
+-exp 输出 rdf 显示节点树
+-chaos 清查未显示节点列表
+-rm|mv 清除/移动 未显示节点目录集
+'''
+
 &lt;&lt;imports&gt;&gt;
 &lt;&lt;define&gt;&gt;
 
 @others
 
+VERSION = "chkscrap.py v14.07.08"
+&lt;&lt;version&gt;&gt;
+&lt;&lt;click&gt;&gt;
+
 if __name__ == "__main__":
-    if 2 != len(sys.argv):
-        print """ %s usage::
-$ python /path/2/chkscrap.py /path/2/MyScrapBook/
-            |                       +- ScrapBook 收藏入口目录
-            +- 指出脚本自身
-        """ % VERSION
-    else:
-        TPATH = os.path.dirname(os.path.abspath(sys.argv[0]))
-        MYBOOK = os.path.abspath(sys.argv[1])
-        RDFD = exp_level_idx(MYBOOK)
-        #exp_root_idx(MYBOOK, RDFD)
-        chk_data_ids(MYBOOK, RDFD)
-        #chk_data_dir(MYBOOK)
-        #exp_root_idx(MYBOOK, RDFD)
+    #cli(obj={})
 
-
+    &lt;&lt;__main__&gt;&gt;
+    
+    
 
 
 
@@ -370,6 +402,12 @@ import shutil
 #import traceback
 import xml.parsers.expat
 #import xml.etree.cElementTree as etree
+#   140708 try click
+import click
+#   140709 ty sh del dir, and others for rebuild rdf
+from sh import rm
+#import untangle
+import xmltodict
 
 #from lxml import etree
 #from xml.etree.cElementTree import ElementTree
@@ -400,6 +438,9 @@ CF = Borg()
 </t>
 <t tx="zoomq.20110821191131.5296">#path
 RDF = "%s/scrapbook.rdf"
+RERDF = '_chaos/scrapbook_%s.rdf'
+PKL = '_chaos/scraotools_%s.pkl'
+TREE = '_chaos/tree4_%s.txt'
 
 @others
 
@@ -413,12 +454,13 @@ DICTRDF = {"ROOT":{}
     ,"DESC":{}
     }
 CRTID = ""
+
 '''
 {"ROOT":{'id':'','li':[]}
 ,"SEQ":{'item...':[]
     ,,,}
 ,"DESC":{'item...':{'id':''
-        ,'type':"" # folder||separator
+        ,'type':"" # folder|separator|note
         ,'icon':''
         ,'title':''
         ,'source':''
@@ -429,6 +471,7 @@ CRTID = ""
     }
 }
 '''
+
 </t>
 <t tx="zoomq.20110825085230.2984">#!/usr/bin/env python
 # -*- coding: utf-8 -*-
@@ -811,61 +854,46 @@ HTM = '''&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;
         start = time.time()
         result = func(*args)
         passtime = time.time() - start
-        print "\n\t%s() RUNed~ %.5f ms" % (func.__name__, passtime*1000)
+        print "\t\t%s() RUNed~ %.5f ms\n" % (func.__name__, passtime*1000)
         return result
     return cal_time
 
 </t>
-<t tx="zoomq.20140226204618.4733">def exp_level_idx(pathto):
+<t tx="zoomq.20140226204618.4733">@run_time
+def exp_level_idx(pathto):
+    '''解析现有 rdf 为 py 数据对象来快速理解/清查
+    '''
     #print pathto, CF.RDF% pathto, os.path.basename(pathto)
-    @others
-    px = xml.parsers.expat.ParserCreate()
-    px.StartElementHandler = start_element
-    px.EndElementHandler = end_element
-    px.Parse(open(CF.RDF % pathto).read(), 1)
-    output = open('scraotools_%s.pkl' % os.path.basename(pathto) , 'wb')
-    pickle.dump(CF.DICTRDF, output)
-    #output.close
-    return CF.DICTRDF
+    print "%s/scrapbook.rdf"% pathto 
+    &lt;&lt;xmltodict.parse&gt;&gt;
+    return None   
+    
+    &lt;&lt;untangle.parse&gt;&gt;
+    return None    
+    
+    &lt;&lt;xml.parsers.expat&gt;&gt;
 
-</t>
+'''
+{'ROOT':[item,,,]
+        , 'SEQ':{'itemID':[item,,,],,,}
+        , 'DESC':['itemID':{'属性':'属性值',,},,,]
+    }
+    ROOT 结点 -&gt; [SEQ|DESC]
+        SEQ 都是目录;
+        DESC 都是最终叶子;
+    
+'''</t>
 <t tx="zoomq.20140226204618.4734">def start_element(name, attrs):
     #print 'Start element:', name, attrs
     if "RDF:Seq" == name:
-        CF.IS_SEQ = 1
-        CF.IS_DESC = 0
-        if "urn:scrapbook:root" == attrs['RDF:about']:
-            #print 'ROOT element:', name, attrs
-            CF.IS_ROOT = 1
-            CF.DICTRDF['ROOT']['id'] = attrs['RDF:about'].split(":")[-1]
-            CF.CRTID = attrs['RDF:about'].split(":")[-1]
-            CF.DICTRDF['ROOT']['li'] = []
-        else:
-            CF.IS_ROOT = 0
-            CF.CRTID = attrs['RDF:about'].split(":")[-1]
-            CF.DICTRDF['SEQ'][CF.CRTID] = []
+        &lt;&lt;RDF:Seq&gt;&gt;
     else:
         CF.IS_SEQ = 0
         if "RDF:li" == name:
-            CF.IS_DESC = 0
-            CF.IS_LI = 1
-            if CF.IS_ROOT:
-                CF.DICTRDF['ROOT']['li'].append(attrs['RDF:resource'].split(":")[-1])
-            else:
-                CF.DICTRDF['SEQ'][CF.CRTID].append(attrs['RDF:resource'].split(":")[-1])
+            &lt;&lt;RDF:li&gt;&gt;
         elif "RDF:Description" == name:
-            CF.IS_DESC = 1
-            CF.IS_LI = 0
-            CF.CRTID = attrs['RDF:about'].split(":")[-1]
-            CF.DICTRDF['DESC'][CF.CRTID] = {
-                'id':attrs['NS2:id']
-                ,'type':attrs['NS2:type']
-                ,'title':attrs['NS2:title']
-                ,'source':attrs['NS2:source']
-                ,'chars':attrs['NS2:chars']
-                ,'icon':attrs['NS2:icon']
-                ,'comment':attrs['NS2:comment']
-                }
+            &lt;&lt;RDF:Description&gt;&gt;
+
 
 
 
@@ -1013,17 +1041,16 @@ def exp_root_idx(expath, drdf):
         #print "is NC:BookmarkSeparator"
         return ""
 </t>
-<t tx="zoomq.20140226204618.4742">def chk_data_dir(abspath):
+<t tx="zoomq.20140226204618.4742">@run_time
+def chk_data_dir(abspath):
     sub_data = os.listdir("%s/data"% abspath)
-    print len(sub_data)
+    print "\t data/dirs : %s"% len(sub_data)
     return sub_data
-    </t>
+</t>
 <t tx="zoomq.20140226204618.4746">@run_time
 def chk_data_ids(expath, drdf):
     rdf = drdf   #pickle.load(open(pkl, 'r'))
-    print rdf.keys()
-    print rdf['ROOT']
-    print len(rdf['DESC'].keys())
+    print "\t DESC nodes : %s"% len(rdf['DESC'].keys())
     #print rdf['DESC']['item20060616103600']
     rdf_all_id = []
     for r in rdf['DESC']:
@@ -1031,20 +1058,19 @@ def chk_data_ids(expath, drdf):
             pass
         else:
             rdf_all_id.append(r)
-    print len(rdf_all_id), type(rdf_all_id)
+    print "\t rdf nodes:", len(rdf_all_id), type(rdf_all_id)
     ls_sub_data = chk_data_dir(expath)
-    print type(ls_sub_data)
     rdf_all_id = [v[4:] for v in rdf_all_id]
-    print len(rdf_all_id)#, _all_id[-1:], ls_sub_data[-1]
     #_difference = [v for v in ls_sub_data if v not in _all_id]  
     _difference = set(ls_sub_data).difference(set(rdf_all_id)) # b中有而a中没有的
-    print "mes dir is:", len(_difference)
-    #print list(_difference)
+    print "losted dir :", len(_difference)
     for err_dir in _difference:
         abs_err_dir = "%s/data/%s"% (expath, err_dir)
         shutil.rmtree(abs_err_dir)
     #print len(rdf['SEQ'].keys())
     #print rdf['SEQ']['item20070831150256']#.keys()
+
+
 </t>
 <t tx="zoomq.20140226204618.4757">@language python
 @tabwidth -4
@@ -1058,7 +1084,7 @@ VERSION = "scrap_re_rdf.py v14.02.27"
 
 if __name__ == "__main__":
     if 2 != len(sys.argv):
-        print """ %s usage::
+        print """ %s 重构 rdf 索引数据库 usage::
 $ python /path/2/scrap_re_rdf.py /path/2/MyScrapBook/
             |                       +- ScrapBook 收藏入口目录
             +- 指出脚本自身
@@ -1350,6 +1376,452 @@ for r in ROOT_KEYS:
 for sub_r in rdf['SEQ'][r]:
     seq_res = sub_r 
     seq_lis += CF.RDF_SEQ_LI% locals()
+
+</t>
+<t tx="zoomq.20140708152848.3462">CF.IS_SEQ = 1
+CF.IS_DESC = 0
+if "urn:scrapbook:root" == attrs['RDF:about']:
+    #print 'ROOT element:', name, attrs
+    CF.IS_ROOT = 1
+    CF.DICTRDF['ROOT']['id'] = attrs['RDF:about'].split(":")[-1]
+    CF.CRTID = attrs['RDF:about'].split(":")[-1]
+    CF.DICTRDF['ROOT']['li'] = []
+else:
+    CF.IS_ROOT = 0
+    CF.CRTID = attrs['RDF:about'].split(":")[-1]
+    CF.DICTRDF['SEQ'][CF.CRTID] = []
+</t>
+<t tx="zoomq.20140708152848.3463">CF.IS_DESC = 0
+CF.IS_LI = 1
+if CF.IS_ROOT:
+    CF.DICTRDF['ROOT']['li'].append(attrs['RDF:resource'].split(":")[-1])
+else:
+    CF.DICTRDF['SEQ'][CF.CRTID].append(attrs['RDF:resource'].split(":")[-1])
+</t>
+<t tx="zoomq.20140708152848.3464">CF.IS_DESC = 1
+CF.IS_LI = 0
+CF.CRTID = attrs['RDF:about'].split(":")[-1]
+CF.DICTRDF['DESC'][CF.CRTID] = {
+    'id':attrs['NS2:id']
+    ,'type':attrs['NS2:type']
+    ,'title':attrs['NS2:title']#.encode('utf8')
+    ,'source':attrs['NS2:source']
+    ,'chars':attrs['NS2:chars']
+    ,'icon':attrs['NS2:icon']
+    ,'comment':attrs['NS2:comment']
+    }
+
+</t>
+<t tx="zoomq.20140708152848.3466"># 解决写文件 'ascii' codec can't encode characters 问题
+# base http://blog.csdn.net/zuyi532/article/details/8851316
+reload(sys)  
+sys.setdefaultencoding('utf8')   
+# 全局变量
+exp_items = []  # 实际输出节点对象
+loop_safe = 5   # 递归安全深度
+exp_txt = []    # 输出文本桟
+
+@run_time
+def exp_rdf_tree(expath, drdf):
+    '''怀疑有很多根本没有出现在树中的结点!
+    '''
+    rdf = drdf
+    #print rdf['DESC']['item20100817230519']
+    deepl = 0
+    for r in rdf['ROOT']['li']:
+        exp_items.append(r)
+        crt_deep, crt_tree = _exp_txt_tree(exp_txt, deepl, r, drdf)
+    casename = os.path.basename(expath)
+    print "\t tree_nodes: ",len(exp_txt)
+    open(CF.TREE % casename, 'w').write("\n".join(exp_txt))
+    print "\t exp_items: ", len(exp_items)
+    print "\t dirs: ", len(exp_items) - len(exp_txt)
+    
+    print "\t DESC : %s"% len(rdf['DESC'].keys())
+    #_diff_show_tree(expath, exp_items, drdf)
+
+&lt;&lt;_diff_show_tree&gt;&gt;
+&lt;&lt;_exp_txt_tree&gt;&gt;
+
+
+</t>
+<t tx="zoomq.20140708152848.3467">if 2 != len(sys.argv):
+    print """ %s 检查 ScrapBook 仓库目录
+usage::
+$ python /path/2/chkscrap.py /path/2/MyScrapBook/
+        |                       +- ScrapBook 收藏入口目录
+        +- 指出脚本自身
+    """ % VERSION
+else:
+    TPATH = os.path.dirname(os.path.abspath(sys.argv[0]))
+    MYBOOK = os.path.abspath(sys.argv[1])
+    REPO_NAME = os.path.basename(MYBOOK)
+    print REPO_NAME
+    RDFD = _load_pkl(REPO_NAME)
+    #RDFD = exp_level_idx(MYBOOK)
+    re_xmltodict_rdf(REPO_NAME, RDFD)
+    #chk_data_ids(MYBOOK, RDFD)
+    #   exp_root_idx(MYBOOK, RDFD)
+    #   chk_data_dir(MYBOOK)
+    #exp_rdf_tree(MYBOOK, RDFD)
+    
+
+</t>
+<t tx="zoomq.20140708152848.3468">@click.group()
+@click.version_option()
+def cli():
+    """检查 ScrapBook 仓库目录
+    """
+    print('V 14.7.8.20')
+
+</t>
+<t tx="zoomq.20140708152848.3469">@cli.group()
+def ship():
+    """Manages ships."""
+
+
+@ship.command('new')
+@click.argument('name')
+def ship_new(name):
+    """Creates a new ship."""
+    click.echo('Created ship %s' % name)
+
+
+@ship.command('move')
+@click.argument('ship')
+@click.argument('x', type=float)
+@click.argument('y', type=float)
+@click.option('--speed', metavar='KN', default=10,
+              help='Speed in knots.')
+def ship_move(ship, x, y, speed):
+    """Moves SHIP to the new location X,Y."""
+    click.echo('Moving ship %s to %s,%s with speed %s' % (ship, x, y, speed))
+
+
+@ship.command('shoot')
+@click.argument('ship')
+@click.argument('x', type=float)
+@click.argument('y', type=float)
+def ship_shoot(ship, x, y):
+    """Makes SHIP fire to X,Y."""
+    click.echo('Ship %s fires to %s,%s' % (ship, x, y))
+
+
+@cli.group('mine')
+def mine():
+    """Manages mines."""
+
+
+@mine.command('set')
+@click.argument('x', type=float)
+@click.argument('y', type=float)
+@click.option('ty', '--moored', flag_value='moored',
+              default=True,
+              help='Moored (anchored) mine. Default.')
+@click.option('ty', '--drifting', flag_value='drifting',
+              help='Drifting mine.')
+def mine_set(x, y, ty):
+    """Sets a mine at a specific coordinate."""
+    click.echo('Set %s mine at %s,%s' % (ty, x, y))
+
+
+@mine.command('remove')
+@click.argument('x', type=float)
+@click.argument('y', type=float)
+def mine_remove(x, y):
+    """Removes a mine at a specific coordinate."""
+    click.echo('Removed mine at %s,%s' % (x, y))
+
+</t>
+<t tx="zoomq.20140708152848.3470">@run_time
+def _load_pkl(REPO_NAME):
+    print CF.PKL % REPO_NAME
+    RDFD = pickle.load(open(CF.PKL % REPO_NAME, 'r'))
+    return RDFD
+
+
+    </t>
+<t tx="zoomq.20140708152848.3471">def _exp_txt_tree(exp_txt, deepl, node, drdf):
+    if deepl &gt; loop_safe:
+        return None
+    rdf = drdf
+    r = node
+    pre = ".." * deepl
+    if r in rdf['DESC'].keys():
+        exp_items.append(r)
+        dir_type = rdf['DESC'][r]['type']
+        #print "%s%s %s %s"% (pre, r, dir_type, rdf['DESC'][r]['title'])
+        exp_txt.append("%s%s %s %s"% (pre, r, dir_type, rdf['DESC'][r]['title']))
+    # 可能重ID ?
+    if r in rdf['SEQ'].keys():
+        #print rdf['SEQ'][r]
+        exp_items.append(r)
+        for l in rdf['SEQ'][r]:
+            _exp_txt_tree(exp_txt, deepl+1, l, drdf)
+    else:
+        if r in rdf['DESC'].keys():
+            print rdf['DESC'][r]['type']
+        else:
+            print r
+            return None
+            #print "\t NC:BookmarkSeparator",r
+            #exp_items.append(r)
+        #print "\t one line---"
+    return deepl+1, exp_txt
+
+
+
+</t>
+<t tx="zoomq.20140708152848.3472">
+def _diff_show_tree(expath, show_items, drdf):
+    rdf = drdf
+    showed = list(set(show_items))
+    chaos = []
+    for node in rdf['DESC'].keys():
+        if node not in showed:
+            chaos.append(rdf['DESC'][node])
+    print "\t chaos:", len(chaos)
+    print "\t 有效:", len(rdf['DESC'].keys())-len(chaos)
+    for c in chaos:
+        del_dir = "%s/data/%s"% (expath, c['id'])
+        print(rm("-Rfv", del_dir))
+        #os.removedirs(del_dir)
+        #break</t>
+<t tx="zoomq.20140708152848.3473">@path _chaos
+</t>
+<t tx="zoomq.20140708152848.3475">&lt;&lt;TPL_BODY&gt;&gt;
+
+&lt;&lt;TPL_ROOT&gt;&gt;
+&lt;&lt;TPL_SEQ&gt;&gt;
+&lt;&lt;TPL_LI&gt;&gt;
+
+&lt;&lt;TPL_FOLDER&gt;&gt;
+&lt;&lt;TPL_NOTE&gt;&gt;
+&lt;&lt;TPL_URI&gt;&gt;
+
+&lt;&lt;TPL_NC&gt;&gt;
+
+
+
+
+
+
+
+
+</t>
+<t tx="zoomq.20140708152848.3476">TPL_BODY = '''&lt;?xml version="1.0"?&gt;
+&lt;RDF:RDF xmlns:NS2="http://amb.vis.ne.jp/mozilla/scrapbook-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#"&gt;
+%(rdf_body)s
+&lt;/RDF:RDF&gt;
+'''
+</t>
+<t tx="zoomq.20140708152848.3477">TPL_ROOT = '''&lt;RDF:Seq RDF:about="urn:scrapbook:root"&gt;
+    %(rdf_li)s
+  &lt;/RDF:Seq&gt;
+'''
+</t>
+<t tx="zoomq.20140708152848.3478">TPL_SEQ = '''&lt;RDF:Seq RDF:about="urn:scrapbook:%(rdf_item)s"&gt;
+    %(rdf_li)s
+  &lt;/RDF:Seq&gt;
+'''
+</t>
+<t tx="zoomq.20140708152848.3479">TPL_LI = '''
+&lt;RDF:li RDF:resource="urn:scrapbook:%(rdf_item)s"/&gt;
+'''
+</t>
+<t tx="zoomq.20140708152848.3480">TPL_FOLDER = '''
+&lt;RDF:Description RDF:about="urn:scrapbook:%(rdf_item)s"
+        NS2:type="folder"
+        NS2:id="%(rdf_id)s"
+        NS2:title="%(rdf_title)s"
+        NS2:chars=""
+        NS2:icon=""
+        NS2:source=""
+        NS2:comment="" /&gt;
+'''
+</t>
+<t tx="zoomq.20140708152848.3481"># type 为空或是"marked"
+TPL_URI = '''
+&lt;RDF:Description RDF:about="urn:scrapbook:%(rdf_item)s"
+        NS2:type="%(rdf_type)s"
+        NS2:id="%(rdf_id)s"
+        NS2:title="%(rdf_title)s"
+        NS2:comment="%(rdf_comment)s"
+        NS2:icon="%(rdf_icon)s"
+        NS2:source="%(rdf_source)s" 
+        NS2:chars="UTF-8" /&gt;
+'''
+</t>
+<t tx="zoomq.20140708152848.3482">TPL_NC = '''
+&lt;NC:BookmarkSeparator RDF:about="urn:scrapbook:%(rdf_item)s"
+        NS2:type="separator"
+        NS2:id="%(rdf_id)s"
+        NS2:title=""
+        NS2:chars=""
+        NS2:comment=""
+        NS2:icon=""
+        NS2:source="" /&gt;
+'''
+</t>
+<t tx="zoomq.20140708152848.3483">TPL_NOTE = '''
+&lt;RDF:Description RDF:about="urn:scrapbook:%(rdf_item)s"
+        NS2:type="note"
+        NS2:id="%(rdf_id)s"
+        NS2:title="%(rdf_title)s"
+        NS2:chars="UTF-8"
+        NS2:comment=""
+        NS2:icon=""
+        NS2:source=""/&gt;
+'''
+</t>
+<t tx="zoomq.20140708152848.3485">@others
+px = xml.parsers.expat.ParserCreate()
+px.StartElementHandler = start_element
+px.EndElementHandler = end_element
+px.Parse(open(CF.RDF % pathto).read(), 1)
+output = open(CF.PKL % os.path.basename(pathto) , 'wb')
+pickle.dump(CF.DICTRDF, output)
+#output.close
+return CF.DICTRDF
+
+</t>
+<t tx="zoomq.20140708152848.3486">obj = untangle.parse("%s/scrapbook.rdf"% pathto)
+print dir(obj.RDF_RDF.RDF_Description)
+print "RDF:Seq\t\t\t", len(obj.RDF_RDF.RDF_Seq)
+print "RDF_Description\t\t", len(obj.RDF_RDF.RDF_Description)
+print "NC:BookmarkSeparator\t", len(obj.RDF_RDF.NC_BookmarkSeparator)
+
+output = open(CF.PKL % os.path.basename(pathto) , 'wb')
+print output
+#print type(obj.RDF_RDF)
+#pickle.dump(obj.RDF_RDF, output)
+return obj.RDF_RDF
+</t>
+<t tx="zoomq.20140708152848.3487">doc = xmltodict.parse(open("%s/scrapbook.rdf"% pathto, 'r').read())
+print dir(doc)
+print doc.keys()
+print "RDF:Seq\t\t\t", len(doc['RDF:RDF']['RDF:Seq'])
+print "RDF:Description\t\t", len(doc['RDF:RDF']['RDF:Description'])
+print "NC:BookmarkSeparator\t", len(doc['RDF:RDF']['NC:BookmarkSeparator'])
+XRDF = {'doc':doc
+    , 'k2seq':{}
+    , 'k2desc':{}
+    , 'k2nc':{}
+    , 'root':[] #seq['RDF:li']
+    }
+# re-index by RDF:about|
+for seq in doc['RDF:RDF']['RDF:Seq']:
+    if "urn:scrapbook:root" == seq['@RDF:about']:
+        XRDF['root'] = seq
+    else:
+        XRDF['k2seq'][seq['@RDF:about']] = seq
+    '''
+    if '@NS2:type' in seq.keys():
+        if 'separator' == seq['@NS2:type']:
+            print seq
+            return None 
+    '''
+for desc in doc['RDF:RDF']['RDF:Description']:
+    XRDF['k2desc'][seq['@RDF:about']] = desc 
+
+for nc in doc['RDF:RDF']['NC:BookmarkSeparator']:
+    XRDF['k2nc'][nc['@RDF:about']] = nc 
+
+output = open(CF.PKL % os.path.basename(pathto) , 'wb')
+print output
+#print type(obj.RDF_RDF)
+pickle.dump(XRDF, output)
+return XRDF
+
+
+
+</t>
+<t tx="zoomq.20140708152848.3488">_RIGHT_NODES = []
+
+@run_time
+def re_xmltodict_rdf(REPO_NAME, XDFD):
+    """usage xmltodict check hided chaos nodes
+        and re-build tiny rdf 
+        for ScrapBook reload
+    """
+    ROOT = XDFD['root']
+    #print ROOT['RDF:li']
+    #print "\t K2NC:", K2NC['urn:scrapbook:item20091118105509']
+    for li in ROOT['RDF:li']:
+        #print li['@RDF:resource']
+        #print "type(li)", type(li)
+        #print li
+        #print "\t ROOT here walk out all rights nodes!"
+        _walk_rdf_tree(exp_txt, 1, li, XDFD)
+    print "\t _RIGHT_NODES:", len(_RIGHT_NODES)
+    return None
+    
+&lt;&lt;_walk_rdf_tree&gt;&gt;
+
+
+
+</t>
+<t tx="zoomq.20140708152848.3489">def _walk_rdf_tree(exp_txt, deepl, crt_node, XDFD):
+    """base pointed node, try dig all of son nodes
+    - all start node must be RDF:Seq
+    - if not , means end dig do others matter
+    """
+    if deepl &gt; loop_safe:
+        return None
+    RDFD = XDFD['doc']['RDF:RDF']
+    K2SEQ = XDFD['k2seq']
+    K2DESC = XDFD['k2desc']
+    K2NC = XDFD['k2nc']
+    #print deepl, "\t crt_node:", crt_node
+    try:
+        if '@RDF:resource' in crt_node.keys():
+            crt_id = crt_node['@RDF:resource']
+        else:
+            crt_id = crt_node['@RDF:about']
+    except:
+        print crt_node
+        return None
+    _RIGHT_NODES.append(crt_id) # 记录了包含目录以及其它所有有效的节点
+    # for recursion must test all cases
+    if crt_id in K2SEQ:
+        #print K2SEQ[crt_id]['RDF:li']
+        #print "K2SEQ[crt_id].keys()", K2SEQ[crt_id].keys()
+        if 'RDF:li' not in K2SEQ[crt_id].keys():
+            #print K2SEQ[crt_id]
+            """&lt;RDF:Seq RDF:about="urn:scrapbook:item20120321212141"&gt;
+            &lt;/RDF:Seq&gt;
+            类似的空目录情况....
+            直接输出目录名就好
+            """
+            if crt_id in K2DESC:
+                print "%s %s %s"% (".."*deepl
+                    , crt_id.split(':')[-1]
+                    , K2DESC[crt_id]['@NS2:title']
+                    )
+            else:
+                print "~"*42
+        else:
+            for li in K2SEQ[crt_id]['RDF:li']:
+                _walk_rdf_tree(exp_txt
+                    , deepl+1
+                    , li
+                    , XDFD)
+            
+    elif crt_id in K2DESC:
+        # means DESC
+        print K2DESC[crt_id]
+        if crt_id in K2DESC.keys():
+            
+            print "%s %s %s"% (".."*deepl
+                , crt_id.split(':')[-1]
+                , K2DESC[crt_id]['@NS2:title']
+                )
+    else: # NC
+        print "~"*42
+            
+    return deepl+1, exp_txt
 
 </t>
 </tnodes>

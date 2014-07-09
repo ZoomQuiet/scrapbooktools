@@ -250,7 +250,7 @@ def rebuild_rdf(expath, drdf):
 
 if __name__ == "__main__":
     if 2 != len(sys.argv):
-        print """ %s usage::
+        print """ %s 重构 rdf 索引数据库 usage::
 $ python /path/2/scrap_re_rdf.py /path/2/MyScrapBook/
             |                       +- ScrapBook 收藏入口目录
             +- 指出脚本自身

@@ -169,12 +169,69 @@ def run_time(func):
         start = time.time()
         result = func(*args)
         passtime = time.time() - start
-        print "\n\t%s() RUNed~ %.5f ms" % (func.__name__, passtime*1000)
+        print "\t\t%s() RUNed~ %.5f ms\n" % (func.__name__, passtime*1000)
         return result
     return cal_time
 
+@run_time
 def exp_level_idx(pathto):
+    '''解析现有 rdf 为 py 数据对象来快速理解/清查
+    '''
     #print pathto, CF.RDF% pathto, os.path.basename(pathto)
+    print "%s/scrapbook.rdf"% pathto 
+    doc = xmltodict.parse(open("%s/scrapbook.rdf"% pathto, 'r').read())
+    print dir(doc)
+    print doc.keys()
+    print "RDF:Seq\t\t\t", len(doc['RDF:RDF']['RDF:Seq'])
+    print "RDF:Description\t\t", len(doc['RDF:RDF']['RDF:Description'])
+    print "NC:BookmarkSeparator\t", len(doc['RDF:RDF']['NC:BookmarkSeparator'])
+    XRDF = {'doc':doc
+        , 'k2seq':{}
+        , 'k2desc':{}
+        , 'k2nc':{}
+        , 'root':[] #seq['RDF:li']
+        }
+    # re-index by RDF:about|
+    for seq in doc['RDF:RDF']['RDF:Seq']:
+        if "urn:scrapbook:root" == seq['@RDF:about']:
+            XRDF['root'] = seq
+        else:
+            XRDF['k2seq'][seq['@RDF:about']] = seq
+        '''
+        if '@NS2:type' in seq.keys():
+            if 'separator' == seq['@NS2:type']:
+                print seq
+                return None 
+        '''
+    for desc in doc['RDF:RDF']['RDF:Description']:
+        XRDF['k2desc'][seq['@RDF:about']] = desc 
+
+    for nc in doc['RDF:RDF']['NC:BookmarkSeparator']:
+        XRDF['k2nc'][nc['@RDF:about']] = nc 
+
+    output = open(CF.PKL % os.path.basename(pathto) , 'wb')
+    print output
+    #print type(obj.RDF_RDF)
+    pickle.dump(XRDF, output)
+    return XRDF
+
+
+
+    return None   
+    
+    obj = untangle.parse("%s/scrapbook.rdf"% pathto)
+    print dir(obj.RDF_RDF.RDF_Description)
+    print "RDF:Seq\t\t\t", len(obj.RDF_RDF.RDF_Seq)
+    print "RDF_Description\t\t", len(obj.RDF_RDF.RDF_Description)
+    print "NC:BookmarkSeparator\t", len(obj.RDF_RDF.NC_BookmarkSeparator)
+
+    output = open(CF.PKL % os.path.basename(pathto) , 'wb')
+    print output
+    #print type(obj.RDF_RDF)
+    #pickle.dump(obj.RDF_RDF, output)
+    return obj.RDF_RDF
+    return None    
+    
     def start_element(name, attrs):
         #print 'Start element:', name, attrs
         if "RDF:Seq" == name:
@@ -206,12 +263,14 @@ def exp_level_idx(pathto):
                 CF.DICTRDF['DESC'][CF.CRTID] = {
                     'id':attrs['NS2:id']
                     ,'type':attrs['NS2:type']
-                    ,'title':attrs['NS2:title']
+                    ,'title':attrs['NS2:title']#.encode('utf8')
                     ,'source':attrs['NS2:source']
                     ,'chars':attrs['NS2:chars']
                     ,'icon':attrs['NS2:icon']
                     ,'comment':attrs['NS2:comment']
                     }
+
+
 
 
 
@@ -227,11 +286,22 @@ def exp_level_idx(pathto):
     px.StartElementHandler = start_element
     px.EndElementHandler = end_element
     px.Parse(open(CF.RDF % pathto).read(), 1)
-    output = open('scraotools_%s.pkl' % os.path.basename(pathto) , 'wb')
+    output = open(CF.PKL % os.path.basename(pathto) , 'wb')
     pickle.dump(CF.DICTRDF, output)
     #output.close
     return CF.DICTRDF
 
+
+'''
+{'ROOT':[item,,,]
+        , 'SEQ':{'itemID':[item,,,],,,}
+        , 'DESC':['itemID':{'属性':'属性值',,},,,]
+    }
+    ROOT 结点 -> [SEQ|DESC]
+        SEQ 都是目录;
+        DESC 都是最终叶子;
+    
+'''
 @run_time
 def exp_root_idx(expath, drdf):
     rdf = drdf   #pickle.load(open(pkl, 'r'))
