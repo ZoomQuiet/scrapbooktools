@@ -66,7 +66,7 @@
 </v>
 <v t="zoomq.20140708152848.3492"><vh>&lt;&lt;_print_tree_node&gt;&gt;</vh></v>
 </v>
-<v t="zoomq.20140708152848.7643"><vh>mv_chaos_data()</vh>
+<v t="zoomq.20140708152848.7643" a="E"><vh>mv_chaos_data()</vh>
 <v t="zoomq.20140708152848.7645"><vh>&lt;&lt;progressbar&gt;&gt;</vh></v>
 </v>
 <v t="zoomq.20140226204618.4746"><vh>chk_data_ids(expath,drdf)</vh></v>
@@ -425,6 +425,8 @@ from sh import ls
 from sh import wc
 #import untangle
 import xmltodict
+import progressbar
+
 #from lxml import etree
 #from xml.etree.cElementTree import ElementTree
 #from rdflib.URIRef import URIRef
@@ -1931,7 +1933,7 @@ print "\nchaos notes:\t", ccount
 print "clean DESC:\t", len(RDF_DESC)
 </t>
 <t tx="zoomq.20140708152848.7641">max_action = len(RDF_DESC) - len(RIGHT_NODES)
-import progressbar
+
 #(end=max_action, width=79)
 opt_pbar = {'end':max_action, 'width':64
     , 'fill': '&gt;'
@@ -1994,7 +1996,7 @@ pickle.dump(XRDF, output)
 
 </t>
 <t tx="zoomq.20140708152848.7645">max_action = len(data_li)
-import progressbar
+#import progressbar
 #(end=max_action, width=79)
 opt_pbar = {'end':max_action, 'width':64
     , 'fill': '&gt;'

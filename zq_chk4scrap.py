@@ -27,6 +27,8 @@ from sh import ls
 from sh import wc
 #import untangle
 import xmltodict
+import progressbar
+
 #from lxml import etree
 #from xml.etree.cElementTree import ElementTree
 #from rdflib.URIRef import URIRef
@@ -351,7 +353,7 @@ def re_xmltodict_rdf(REPO_NAME, XRDF):
     #print "id->RDF_DEC", id(RDF_DESC)
     #print "id->XRDF['doc']...", id(XRDF['doc']['RDF:RDF']['RDF:Description'])
     max_action = len(RDF_DESC) - len(RIGHT_NODES)
-    import progressbar
+
     #(end=max_action, width=79)
     opt_pbar = {'end':max_action, 'width':64
         , 'fill': '>'
@@ -514,7 +516,7 @@ def mv_chaos_data(REPO_NAME, XRDF):
     #print len(_K4DESC), "\t<-- _K4DESC"
     #return None
     max_action = len(data_li)
-    import progressbar
+    #import progressbar
     #(end=max_action, width=79)
     opt_pbar = {'end':max_action, 'width':64
         , 'fill': '>'
