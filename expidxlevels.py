@@ -180,7 +180,7 @@ def exp_level_idx(pathto):
     #print pathto, CF.RDF% pathto, os.path.basename(pathto)
     print "%s/scrapbook.rdf"% pathto 
     doc = xmltodict.parse(open("%s/scrapbook.rdf"% pathto, 'r').read())
-    print dir(doc)
+    #print dir(doc)
     print doc.keys()
     print "RDF:Seq\t\t\t", len(doc['RDF:RDF']['RDF:Seq'])
     print "RDF:Description\t\t", len(doc['RDF:RDF']['RDF:Description'])
@@ -192,20 +192,18 @@ def exp_level_idx(pathto):
         , 'root':[] #seq['RDF:li']
         }
     # re-index by RDF:about|
+    print "keys doc['RDF:RDF']\n\t", doc['RDF:RDF'].keys()
+    #print "keys doc['RDF:RDF']['RDF:Seq']", doc['RDF:RDF']['RDF:Seq'].keys()
+    #print "keys doc['RDF:RDF']['RDF:Description']", doc['RDF:RDF']['RDF:Description'].keys()
+    #print "doc['RDF:RDF']['RDF:Description']", len(doc['RDF:RDF']['RDF:Description'])
+    #return None
     for seq in doc['RDF:RDF']['RDF:Seq']:
         if "urn:scrapbook:root" == seq['@RDF:about']:
             XRDF['root'] = seq
         else:
             XRDF['k2seq'][seq['@RDF:about']] = seq
-        '''
-        if '@NS2:type' in seq.keys():
-            if 'separator' == seq['@NS2:type']:
-                print seq
-                return None 
-        '''
     for desc in doc['RDF:RDF']['RDF:Description']:
-        XRDF['k2desc'][seq['@RDF:about']] = desc 
-
+        XRDF['k2desc'][desc['@RDF:about']] = desc 
     for nc in doc['RDF:RDF']['NC:BookmarkSeparator']:
         XRDF['k2nc'][nc['@RDF:about']] = nc 
 

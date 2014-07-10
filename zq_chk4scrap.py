@@ -20,10 +20,13 @@ import xml.parsers.expat
 #   140708 try click
 import click
 #   140709 ty sh del dir, and others for rebuild rdf
+from sh import cp
 from sh import rm
+from sh import mv
+from sh import ls
+from sh import wc
 #import untangle
 import xmltodict
-
 #from lxml import etree
 #from xml.etree.cElementTree import ElementTree
 #from rdflib.URIRef import URIRef
@@ -45,10 +48,12 @@ class Borg():
         self.__dict__ = self.__collective_mind
 
     #path
+    IDPRE = "urn:scrapbook:item%s"
     RDF = "%s/scrapbook.rdf"
     RERDF = '_chaos/scrapbook_%s.rdf'
-    PKL = '_chaos/scraotools_%s.pkl'
+    PKL = '_chaos/scraptools_%s.pkl'
     TREE = '_chaos/tree4_%s.txt'
+    STUFF = '_stuff/'
 
     TPL_BODY = '''<?xml version="1.0"?>
     <RDF:RDF xmlns:NS2="http://amb.vis.ne.jp/mozilla/scrapbook-rdf#"
@@ -169,18 +174,25 @@ def run_time(func):
     return cal_time
 
 @run_time
-def _load_pkl(REPO_NAME):
-    print CF.PKL % REPO_NAME
-    RDFD = pickle.load(open(CF.PKL % REPO_NAME, 'r'))
-    return RDFD
-
-
-    
-@run_time
 def chk_data_dir(abspath):
     sub_data = os.listdir("%s/data"% abspath)
     print "\t data/dirs : %s"% len(sub_data)
     return sub_data
+@run_time
+def _load_pkl(REPO_NAME):
+    print CF.PKL % REPO_NAME
+    XRDF = pickle.load(open(CF.PKL % REPO_NAME, 'r'))
+    print XRDF.keys()
+    print "RDF:ROOT\t", len(XRDF['root']['RDF:li'])
+    #print RDFD['root']
+    print "RDF:Seq\t\t\t", len(XRDF['k2seq'].keys())
+    print "RDF:Description\t\t", len(XRDF['k2desc'].keys())
+    print "NC:BookmarkSeparator\t", len(XRDF['k2nc'])
+    
+    return XRDF
+
+
+    
 @run_time
 def exp_level_idx(pathto):
     '''解析现有 rdf 为 py 数据对象来快速理解/清查
@@ -188,7 +200,7 @@ def exp_level_idx(pathto):
     #print pathto, CF.RDF% pathto, os.path.basename(pathto)
     print "%s/scrapbook.rdf"% pathto 
     doc = xmltodict.parse(open("%s/scrapbook.rdf"% pathto, 'r').read())
-    print dir(doc)
+    #print dir(doc)
     print doc.keys()
     print "RDF:Seq\t\t\t", len(doc['RDF:RDF']['RDF:Seq'])
     print "RDF:Description\t\t", len(doc['RDF:RDF']['RDF:Description'])
@@ -200,20 +212,18 @@ def exp_level_idx(pathto):
         , 'root':[] #seq['RDF:li']
         }
     # re-index by RDF:about|
+    print "keys doc['RDF:RDF']\n\t", doc['RDF:RDF'].keys()
+    #print "keys doc['RDF:RDF']['RDF:Seq']", doc['RDF:RDF']['RDF:Seq'].keys()
+    #print "keys doc['RDF:RDF']['RDF:Description']", doc['RDF:RDF']['RDF:Description'].keys()
+    #print "doc['RDF:RDF']['RDF:Description']", len(doc['RDF:RDF']['RDF:Description'])
+    #return None
     for seq in doc['RDF:RDF']['RDF:Seq']:
         if "urn:scrapbook:root" == seq['@RDF:about']:
             XRDF['root'] = seq
         else:
             XRDF['k2seq'][seq['@RDF:about']] = seq
-        '''
-        if '@NS2:type' in seq.keys():
-            if 'separator' == seq['@NS2:type']:
-                print seq
-                return None 
-        '''
     for desc in doc['RDF:RDF']['RDF:Description']:
-        XRDF['k2desc'][seq['@RDF:about']] = desc 
-
+        XRDF['k2desc'][desc['@RDF:about']] = desc 
     for nc in doc['RDF:RDF']['NC:BookmarkSeparator']:
         XRDF['k2nc'][nc['@RDF:about']] = nc 
 
@@ -310,87 +320,225 @@ def exp_level_idx(pathto):
         DESC 都是最终叶子;
     
 '''
-_RIGHT_NODES = []
-
+_RIGHT_NODES = [] # collect all showing nodes: dir/note/line/page
 @run_time
-def re_xmltodict_rdf(REPO_NAME, XDFD):
+def re_xmltodict_rdf(REPO_NAME, XRDF):
     """usage xmltodict check hided chaos nodes
-        and re-build tiny rdf 
+        and re-build tiny rdf
         for ScrapBook reload
     """
-    ROOT = XDFD['root']
+    print XRDF.keys()
+    RDFD = XRDF['doc']['RDF:RDF']
+    K2SEQ = XRDF['k2seq']
+    K2DESC = XRDF['k2desc']
+    K2NC = XRDF['k2nc']
+    print "RDF:Seq\t\t\t", len(RDFD['RDF:Seq'])
+    print "RDF:Description\t\t", len(RDFD['RDF:Description'])
+    print "NC:BookmarkSeparator\t", len(RDFD['NC:BookmarkSeparator'])
+    print "\tK2DESC\t", len(K2DESC)
+    ROOT = XRDF['root']
     #print ROOT['RDF:li']
     #print "\t K2NC:", K2NC['urn:scrapbook:item20091118105509']
     for li in ROOT['RDF:li']:
-        #print li['@RDF:resource']
-        #print "type(li)", type(li)
-        #print li
         #print "\t ROOT here walk out all rights nodes!"
-        _walk_rdf_tree(exp_txt, 1, li, XDFD)
+        _walk_rdf_tree(exp_txt, 1, li, XRDF)
+
     print "\t _RIGHT_NODES:", len(_RIGHT_NODES)
+    RIGHT_NODES = list(set(_RIGHT_NODES))
+    print "\t RIGHT_NODES:", len(RIGHT_NODES)
+    RDF_DESC = XRDF['doc']['RDF:RDF']['RDF:Description']
+    K2DESC = XRDF['k2desc']
+    #print "id->RDF_DEC", id(RDF_DESC)
+    #print "id->XRDF['doc']...", id(XRDF['doc']['RDF:RDF']['RDF:Description'])
+    max_action = len(RDF_DESC) - len(RIGHT_NODES)
+    import progressbar
+    #(end=max_action, width=79)
+    opt_pbar = {'end':max_action, 'width':64
+        , 'fill': '>'
+        }
+    pbar = progressbar.AnimatedProgressBar(**opt_pbar)
+    ccount = 0
+    for i in RDF_DESC:
+        crt_ID = i['@RDF:about']
+        if crt_ID not in RIGHT_NODES:
+            ccount += 1
+            #print RDF_DESC.index(i)
+            K2DESC.pop(crt_ID)
+            RDF_DESC.pop(RDF_DESC.index(i))
+
+            pbar+1
+            pbar.show_progress()
+
+    print "\nchaos notes:\t", ccount
+    print "clean DESC:\t", len(RDF_DESC)
+    if "CTIME" not in XRDF.keys():
+        XRDF['CTIME'] = 2
+    else:
+        XRDF['CTIME'] = XRDF['CTIME'] + 1
+    # re-writed as .pkl
+    _PKL = CF.PKL % REPO_NAME
+    print(rm("-fv", _PKL))
+
+    output = open(_PKL , 'wb')
+    print output
+    pickle.dump(XRDF, output)
+
+    #return None
+    if 0 == ccount:
+        # finshed cleanning
+        open(CF.RERDF % REPO_NAME, "w").write(
+            xmltodict.unparse(XRDF['doc'], pretty=True))
+        print CF.RERDF % REPO_NAME
+    else:
+        # try more time
+        #XRDF = _load_pkl(REPO_NAME)
+        print ">"*13, "reTRY cleanning", XRDF['CTIME']
+        # call self try again
+        re_xmltodict_rdf(REPO_NAME, XRDF)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return None
-    
-def _walk_rdf_tree(exp_txt, deepl, crt_node, XDFD):
+
+def _walk_rdf_tree(exp_txt, deepl, crt_node, XRDF):
     """base pointed node, try dig all of son nodes
     - all start node must be RDF:Seq
     - if not , means end dig do others matter
     """
     if deepl > loop_safe:
         return None
-    RDFD = XDFD['doc']['RDF:RDF']
-    K2SEQ = XDFD['k2seq']
-    K2DESC = XDFD['k2desc']
-    K2NC = XDFD['k2nc']
-    #print deepl, "\t crt_node:", crt_node
-    try:
-        if '@RDF:resource' in crt_node.keys():
-            crt_id = crt_node['@RDF:resource']
-        else:
-            crt_id = crt_node['@RDF:about']
-    except:
-        print crt_node
-        return None
-    _RIGHT_NODES.append(crt_id) # 记录了包含目录以及其它所有有效的节点
+    RDFD = XRDF['doc']['RDF:RDF']
+    K2SEQ = XRDF['k2seq']
+    K2DESC = XRDF['k2desc']
+    K2NC = XRDF['k2nc']
+    if '@RDF:resource' in crt_node.keys():
+        # Seq|Li
+        crt_id = crt_node['@RDF:resource']
+    else:   
+        # DESC|NC
+        crt_id = crt_node['@RDF:about']
+    # 记录了包含目录以及其它所有有效的节点
+    _RIGHT_NODES.append(crt_id) 
     # for recursion must test all cases
-    if crt_id in K2SEQ:
-        #print K2SEQ[crt_id]['RDF:li']
-        #print "K2SEQ[crt_id].keys()", K2SEQ[crt_id].keys()
+    
+    if crt_id in K2SEQ.keys():
+        # means contents: note/line/page
+        #_print_tree_node(deepl, crt_id, K2DESC)
         if 'RDF:li' not in K2SEQ[crt_id].keys():
-            #print K2SEQ[crt_id]
             """<RDF:Seq RDF:about="urn:scrapbook:item20120321212141">
             </RDF:Seq>
             类似的空目录情况....
             直接输出目录名就好
             """
-            if crt_id in K2DESC:
-                print "%s %s %s"% (".."*deepl
-                    , crt_id.split(':')[-1]
-                    , K2DESC[crt_id]['@NS2:title']
-                    )
-            else:
-                print "~"*42
+            #_print_tree_node(deepl, crt_id, K2DESC)
+            pass
         else:
-            for li in K2SEQ[crt_id]['RDF:li']:
+            if 1 == len(K2SEQ[crt_id]['RDF:li']):
                 _walk_rdf_tree(exp_txt
                     , deepl+1
-                    , li
-                    , XDFD)
-            
-    elif crt_id in K2DESC:
+                    , K2SEQ[crt_id]['RDF:li']
+                    , XRDF)
+                _RIGHT_NODES.append(K2SEQ[crt_id]['RDF:li']['@RDF:resource'])
+                
+            else:
+                #print type(K2SEQ[crt_id]['RDF:li'])
+                #print K2SEQ[crt_id]['RDF:li']
+                for li in K2SEQ[crt_id]['RDF:li']:
+                    #print "K2SEQ[crt_id]>RDF:Li", li
+                    _walk_rdf_tree(exp_txt
+                        , deepl+1
+                        , li
+                        , XRDF)
+                    _RIGHT_NODES.append(li['@RDF:resource'])
+                
+    else:
+        # crt_id in K2DESC.keys():
         # means DESC
-        print K2DESC[crt_id]
-        if crt_id in K2DESC.keys():
-            
-            print "%s %s %s"% (".."*deepl
-                , crt_id.split(':')[-1]
-                , K2DESC[crt_id]['@NS2:title']
-                )
-    else: # NC
-        print "~"*42
+        #_print_tree_node(deepl, crt_id, K2DESC)
+        pass
             
     return deepl+1, exp_txt
 
 
+def _print_tree_node(deepl, crt_id, K2DESC):
+    if crt_id in K2DESC:
+        n_type = K2DESC[crt_id]['@NS2:type']
+        show_type = "c"
+        if "folder" == n_type:
+            show_type = "D"
+        elif "note" == n_type:
+            show_type = "N"
+        else:
+            pass
+        print "%s %s %s %s"% (".."*deepl
+            , show_type
+            , crt_id.split(':')[-1]
+            , K2DESC[crt_id]['@NS2:title']
+            )
+    else:
+        print "~"*42
+
+
+
+
+def mv_chaos_data(REPO_NAME, XRDF):
+    """对比 data/ 目录和有效节点 ID
+    - mv 文章目录到指定备案目录 CF.STUFF
+    """
+    K2DESC = XRDF['k2desc']
+    RDF_DESC = XRDF['doc']['RDF:RDF']['RDF:Description']
+    _AIM_DRI = "%s/data"% REPO_NAME
+    #print _AIM_DRI
+    #data_ls = ls("-1", _AIM_DRI)
+    #data_li = data_ls.stdout.split()
+    data_li = os.listdir(_AIM_DRI)
+    print len(data_li), "\t<-- %s sub dirs"% _AIM_DRI
+    #print len(RDF_DESC), "\t<-- doc['RDF:RDF']['RDF:Description']"
+    #print len(K2DESC.keys()), "\t<-- K2DESC.keys()"
+    _K4DESC = []
+    for i in K2DESC.keys():
+        _K4DESC.append(K2DESC[i]['@RDF:about'][-14:])
+    #print len(_K4DESC), "\t<-- _K4DESC"
+    #return None
+    max_action = len(data_li)
+    import progressbar
+    #(end=max_action, width=79)
+    opt_pbar = {'end':max_action, 'width':64
+        , 'fill': '>'
+        }
+    pbar = progressbar.AnimatedProgressBar(**opt_pbar)
+    count = 0
+    for li in data_li:
+        #_id = CF.IDPRE % li
+        #return None
+        pbar+1
+        pbar.show_progress()
+        if li not in _K4DESC:   #K2DESC.keys():
+            count += 1
+            _SRC = "%s/%s"% (_AIM_DRI, li)
+            #mv(_SRC, CF.STUFF)
+            cp("-rf", _SRC, CF.STUFF)
+            rm("-rf", _SRC)
+            #print "mv -v %s %s"% (_SRC, CF.STUFF)
+            #break
+    print "\n\tmv %s dir into %s"% (count, CF.STUFF)
+    print "means keep %s dir"% (len(data_li) - count)
+    print ">>> ls -1 %s|wc -l"% _AIM_DRI
+    print(wc(ls("-1", _AIM_DRI), "-l"))
+    return None
 
 
 @run_time
@@ -573,15 +721,15 @@ if __name__ == "__main__":
         TPATH = os.path.dirname(os.path.abspath(sys.argv[0]))
         MYBOOK = os.path.abspath(sys.argv[1])
         REPO_NAME = os.path.basename(MYBOOK)
-        print REPO_NAME
-        RDFD = _load_pkl(REPO_NAME)
-        #RDFD = exp_level_idx(MYBOOK)
-        re_xmltodict_rdf(REPO_NAME, RDFD)
-        #chk_data_ids(MYBOOK, RDFD)
-        #   exp_root_idx(MYBOOK, RDFD)
+        #print REPO_NAME
+        XRDF = exp_level_idx(MYBOOK)
+        #XRDF = _load_pkl(REPO_NAME)
+        re_xmltodict_rdf(REPO_NAME, XRDF)
+        mv_chaos_data(REPO_NAME, XRDF)
+        #chk_data_ids(MYBOOK, XRDF)
+        #   exp_root_idx(MYBOOK, XRDF)
         #   chk_data_dir(MYBOOK)
-        #exp_rdf_tree(MYBOOK, RDFD)
-        
+        #exp_rdf_tree(MYBOOK, XRDF)
 
     
     
