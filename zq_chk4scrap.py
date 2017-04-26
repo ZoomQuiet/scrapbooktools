@@ -203,6 +203,18 @@ def exp_level_idx(pathto):
     print "%s/scrapbook.rdf"% pathto 
     doc = xmltodict.parse(open("%s/scrapbook.rdf"% pathto, 'r').read())
     #print dir(doc)
+    '''
+    for seq in doc['RDF:RDF']['RDF:Seq']:
+        if 'urn:scrapbook:search' == seq['@RDF:about']:
+            print dir(seq)
+            print seq.keys()
+            print "son of urn:scrapbook:search:", len(seq['RDF:li'])
+            seq.pop('RDF:li')
+            break
+
+
+
+    '''
     print doc.keys()
     print "RDF:Seq\t\t\t", len(doc['RDF:RDF']['RDF:Seq'])
     print "RDF:Description\t\t", len(doc['RDF:RDF']['RDF:Description'])
@@ -213,12 +225,8 @@ def exp_level_idx(pathto):
         , 'k2nc':{}
         , 'root':[] #seq['RDF:li']
         }
-    # re-index by RDF:about|
+    # re-index for KV points
     print "keys doc['RDF:RDF']\n\t", doc['RDF:RDF'].keys()
-    #print "keys doc['RDF:RDF']['RDF:Seq']", doc['RDF:RDF']['RDF:Seq'].keys()
-    #print "keys doc['RDF:RDF']['RDF:Description']", doc['RDF:RDF']['RDF:Description'].keys()
-    #print "doc['RDF:RDF']['RDF:Description']", len(doc['RDF:RDF']['RDF:Description'])
-    #return None
     for seq in doc['RDF:RDF']['RDF:Seq']:
         if "urn:scrapbook:root" == seq['@RDF:about']:
             XRDF['root'] = seq
@@ -313,6 +321,11 @@ def exp_level_idx(pathto):
 
 
 '''
+#   140711 Alert!
+<RDF:Seq RDF:about="urn:scrapbook:search">
+</RDF:Seq>
+
+
 {'ROOT':[item,,,]
         , 'SEQ':{'itemID':[item,,,],,,}
         , 'DESC':['itemID':{'属性':'属性值',,},,,]
@@ -322,6 +335,22 @@ def exp_level_idx(pathto):
         DESC 都是最终叶子;
     
 '''
+@run_time
+def rm_chaos_search(REPO_NAME, XRDF):
+    """Must empty as:
+    <RDF:Seq RDF:about="urn:scrapbook:search">
+    </RDF:Seq>
+    """
+    RDFD = XRDF['doc']['RDF:RDF']
+    for seq in RDFD['RDF:Seq']:
+        if 'urn:scrapbook:search' == seq['@RDF:about']:
+            print "son of urn:scrapbook:search:", len(seq['RDF:li'])
+            seq.pop('RDF:li')
+            break
+    open(CF.RERDF % REPO_NAME, "w").write(
+        xmltodict.unparse(XRDF['doc'], pretty=True))
+    return None
+    
 _RIGHT_NODES = [] # collect all showing nodes: dir/note/line/page
 @run_time
 def re_xmltodict_rdf(REPO_NAME, XRDF):
@@ -352,8 +381,7 @@ def re_xmltodict_rdf(REPO_NAME, XRDF):
     K2DESC = XRDF['k2desc']
     #print "id->RDF_DEC", id(RDF_DESC)
     #print "id->XRDF['doc']...", id(XRDF['doc']['RDF:RDF']['RDF:Description'])
-    max_action = len(RDF_DESC) - len(RIGHT_NODES)
-
+    max_action = len(RDF_DESC)# - len(RIGHT_NODES)
     #(end=max_action, width=79)
     opt_pbar = {'end':max_action, 'width':64
         , 'fill': '>'
@@ -496,6 +524,7 @@ def _print_tree_node(deepl, crt_id, K2DESC):
 
 
 
+@run_time
 def mv_chaos_data(REPO_NAME, XRDF):
     """对比 data/ 目录和有效节点 ID
     - mv 文章目录到指定备案目录 CF.STUFF
@@ -724,11 +753,12 @@ if __name__ == "__main__":
         MYBOOK = os.path.abspath(sys.argv[1])
         REPO_NAME = os.path.basename(MYBOOK)
         #print REPO_NAME
-        XRDF = exp_level_idx(MYBOOK)
-        #XRDF = _load_pkl(REPO_NAME)
-        re_xmltodict_rdf(REPO_NAME, XRDF)
-        mv_chaos_data(REPO_NAME, XRDF)
-        #chk_data_ids(MYBOOK, XRDF)
+        #XRDF = exp_level_idx(MYBOOK)
+        XRDF = _load_pkl(REPO_NAME)
+        rm_chaos_search(REPO_NAME, XRDF)
+        #re_xmltodict_rdf(REPO_NAME, XRDF)
+        #mv_chaos_data(REPO_NAME, XRDF)
+        #   chk_data_ids(MYBOOK, XRDF)
         #   exp_root_idx(MYBOOK, XRDF)
         #   chk_data_dir(MYBOOK)
         #exp_rdf_tree(MYBOOK, XRDF)

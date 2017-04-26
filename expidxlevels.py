@@ -1,8 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-VERSION = "expidxlevels.py v11.08.29"
+#VERSION = "expidxlevels.py v11.08.29"
+VERSION = "expidxlevels.py v17.4.26"
 import os
 import sys
+# 解决写文件 'ascii' codec can't encode characters 问题
+# base http://blog.csdn.net/zuyi532/article/details/8851316
+reload(sys)  
+sys.setdefaultencoding('utf8')   
 import pickle
 import types
 import time
@@ -32,6 +37,10 @@ class Borg():
 
     #path
     RDF = "%s/scrapbook.rdf"
+    RERDF = '_chaos/scrapbook_%s.rdf'
+    PKL = '_chaos/scraptools_%s.pkl'
+    TREE = '_chaos/tree4_%s.txt'
+    STUFF = '_stuff/'
 
     # VANCL esp.
     HTM = '''<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -40,38 +49,42 @@ class Borg():
     	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     	<meta http-equiv="Content-Style-Type" content="text/css">
     	<meta http-equiv="Content-Script-Type" content="text/javascript">
-    	<title>{%(bookname)s} index tree exp. As HTML - ScrapBook</title>
+    	<title>{%(bookname)s} index tree export into iFrame - ScrapBook Collection by Zoom.Quiet </title>
     	<link rel="stylesheet" type="text/css" href="./output.css" media="all">
 
     </head>
     '''
     HTM += '''<body>
-    <H3>ZQ's <a href="http://amb.vis.ne.jp/mozilla/scrapbook/">SCRAPBOOK</a> Repo.:{%(bookname)s} root index</H3>
+    <H4><a href="http://zoomquiet.io">Zoom.Quiet</a>'s 
+    <a href="http://amb.vis.ne.jp/mozilla/scrapbook/">SCRAPBOOK</a> 
+    Repo.<b>/%(bookname)s/</b> index
+    </H4>
         <table>
         %(body)s
         </table>
-
 
     <hr/>
     <div id="poweredby">
     <H4>USAGE</H4>
     <ul>
-    <li>Author: <a href="http://about.me/zoom.quiet">Zoom Quiet (zoom.quiet) on about.me</a>
+    <li>Author: <a href="http://zoomquiet.io">ZoomQuiet.io</a> 
+    (<a href="mailto:zoomquiet+io[AT]gmail.com">zoom.quiet</a>)
         </li>
     <li>Tools: <a href="https://bitbucket.org/ZoomQuiet/scraptools">ZoomQuiet / scraptools — Bitbucket</a>
         </li>
     <li>Licenses: <a href="http://creativecommons.org/licenses/by-sa/2.5/cn/">CC(by-sa)2.5</a>
-        (expect originality licenses of pages)
+        (expect originality licenses of all pages)
         </li>
     </ul>
 
+    <hr/>
     <b>powered by:</b>
         <a href="http://www.python.org/">Python</a>
         ,<a href="http://amb.vis.ne.jp/mozilla/scrapbook/">SCRAPBOOK</a>
         ,<a href="http://webpages.charter.net/edreamleo/front.html">Leo</a>
         ,<a href="http://www.catb.org/hacker-emblem/">Hacker</a>
-
-     </a>
+        ,<a href="http://www.qiniu.com/">
+            <img src="https://avatars1.githubusercontent.com/u/1563636?s=24"></a> 
     </div>
 
     </body>
@@ -81,7 +94,8 @@ class Borg():
     <html>
     <head>
     	<meta http-equiv="Content-Type" Content="text/html;charset=UTF-8">
-    	<title>Output {%(seqlevel)s} As HTML Tree - ScrapBook</title>
+    	<title>exported {%(seqlevel)s} as iFrame Tree 
+        - ScrapBook Collection by Zoom.Quiet</title>
     </head>
     <frameset cols="200,*">
     	<frame id="side" name="side" src="./%(treeid)s.html">
@@ -99,7 +113,7 @@ class Borg():
     	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     	<meta http-equiv="Content-Style-Type" content="text/css">
     	<meta http-equiv="Content-Script-Type" content="text/javascript">
-    	<title>Output As HTML - ScrapBook</title>
+    	<title>extput As iFrame - ScrapBook Collection by Zoom.Quiet</title>
     	<link rel="stylesheet" type="text/css" href="./output.css" media="all">
     	<script type="text/javascript" language="JavaScript"><!--
     	function toggle(aID) {
@@ -174,62 +188,61 @@ def run_time(func):
     return cal_time
 
 @run_time
+def exp_root_idx(expath, drdf):
+    rdf = drdf   #pickle.load(open(pkl, 'r'))
+    bookname = os.path.basename(expath)
+    htm = ""
+    count = 0
+    loops = 0
+    for rootseq in rdf['ROOT']['li']:
+        loops += 1
+        if 0 == (loops % 2):
+            htm += '<tr><td>%s</td></tr>\n'% _seq_info(rdf, rootseq)
+        else:
+            htm += '<tr class="odd"><td>%s</td></tr>\n'% _seq_info(rdf, rootseq)
+        count += exp_sub_idx(expath, rdf, rootseq)
+    print "collected pages == ", count
+    body = htm.encode('utf8')
+    html = CF.HTM % locals()
+    #open("%s/tree/root-idx.html"% expath, 'w').write(html.encode('utf8'))
+    open("%s/tree/index.html"% expath, 'w').write(html)
+    body = u"<h1>是也乎,(￣▽￣)<h1/><h2>~ Sayeahooo!</h2>"
+    html = CF.HTM % locals()
+    open("%s/tree/main.html"% expath, 'w').write(html)
+
+def exp_sub_idx(expath, drdf, seqid):
+    rdf = drdf   #pickle.load(open(pkl, 'r'))
+    bookname = os.path.basename(expath)    
+    body = "<tr><td><H3><a href='index.html'>back ROOT index</a></H3></td></tr>"
+    tot = 0
+    if seqid in rdf['SEQ']:
+        for subseq in rdf['SEQ'][seqid]:
+            body += '<tr><td>%s</td></tr>\n' % _seq_info(rdf, subseq)
+            if subseq in rdf['SEQ']:
+                tot += exp_if_tree(expath, rdf, seqid, subseq)
+    return tot
+
+def exp_if_tree(expath, drdf, crtseq, seqid):
+    rdf = drdf   #pickle.load(open(pkl, 'r'))
+    bookname = os.path.basename(expath)
+    treeli = ""
+    ulis = list(_uli_all_item(rdf, seqid))
+    treeli = "\n".join(ulis)
+    upback = "item%s-idx.html" % drdf['DESC'][crtseq]['id']
+    html = CF.IDX % locals()
+    open("%s/tree/%s-tree.html"% (expath, seqid),'w').write(html.encode('utf8'))
+    treeid = "%s-tree" % seqid
+    seqlevel = drdf['DESC'][seqid]['title']
+    html = CF.FSET % locals()
+    open("%s/tree/%s-frameset.html"% (expath, seqid),'w').write(html.encode('utf8'))
+    return len(ulis)
+
+@run_time
 def exp_level_idx(pathto):
     '''解析现有 rdf 为 py 数据对象来快速理解/清查
     '''
     #print pathto, CF.RDF% pathto, os.path.basename(pathto)
     print "%s/scrapbook.rdf"% pathto 
-    doc = xmltodict.parse(open("%s/scrapbook.rdf"% pathto, 'r').read())
-    #print dir(doc)
-    print doc.keys()
-    print "RDF:Seq\t\t\t", len(doc['RDF:RDF']['RDF:Seq'])
-    print "RDF:Description\t\t", len(doc['RDF:RDF']['RDF:Description'])
-    print "NC:BookmarkSeparator\t", len(doc['RDF:RDF']['NC:BookmarkSeparator'])
-    XRDF = {'doc':doc
-        , 'k2seq':{}
-        , 'k2desc':{}
-        , 'k2nc':{}
-        , 'root':[] #seq['RDF:li']
-        }
-    # re-index by RDF:about|
-    print "keys doc['RDF:RDF']\n\t", doc['RDF:RDF'].keys()
-    #print "keys doc['RDF:RDF']['RDF:Seq']", doc['RDF:RDF']['RDF:Seq'].keys()
-    #print "keys doc['RDF:RDF']['RDF:Description']", doc['RDF:RDF']['RDF:Description'].keys()
-    #print "doc['RDF:RDF']['RDF:Description']", len(doc['RDF:RDF']['RDF:Description'])
-    #return None
-    for seq in doc['RDF:RDF']['RDF:Seq']:
-        if "urn:scrapbook:root" == seq['@RDF:about']:
-            XRDF['root'] = seq
-        else:
-            XRDF['k2seq'][seq['@RDF:about']] = seq
-    for desc in doc['RDF:RDF']['RDF:Description']:
-        XRDF['k2desc'][desc['@RDF:about']] = desc 
-    for nc in doc['RDF:RDF']['NC:BookmarkSeparator']:
-        XRDF['k2nc'][nc['@RDF:about']] = nc 
-
-    output = open(CF.PKL % os.path.basename(pathto) , 'wb')
-    print output
-    #print type(obj.RDF_RDF)
-    pickle.dump(XRDF, output)
-    return XRDF
-
-
-
-    return None   
-    
-    obj = untangle.parse("%s/scrapbook.rdf"% pathto)
-    print dir(obj.RDF_RDF.RDF_Description)
-    print "RDF:Seq\t\t\t", len(obj.RDF_RDF.RDF_Seq)
-    print "RDF_Description\t\t", len(obj.RDF_RDF.RDF_Description)
-    print "NC:BookmarkSeparator\t", len(obj.RDF_RDF.NC_BookmarkSeparator)
-
-    output = open(CF.PKL % os.path.basename(pathto) , 'wb')
-    print output
-    #print type(obj.RDF_RDF)
-    #pickle.dump(obj.RDF_RDF, output)
-    return obj.RDF_RDF
-    return None    
-    
     def start_element(name, attrs):
         #print 'Start element:', name, attrs
         if "RDF:Seq" == name:
@@ -289,8 +302,74 @@ def exp_level_idx(pathto):
     #output.close
     return CF.DICTRDF
 
+    return None   
+    
+    doc = xmltodict.parse(open("%s/scrapbook.rdf"% pathto, 'r').read())
+    #print dir(doc)
+    '''
+    for seq in doc['RDF:RDF']['RDF:Seq']:
+        if 'urn:scrapbook:search' == seq['@RDF:about']:
+            print dir(seq)
+            print seq.keys()
+            print "son of urn:scrapbook:search:", len(seq['RDF:li'])
+            seq.pop('RDF:li')
+            break
 
+
+
+    '''
+    print doc.keys()
+    print "RDF:Seq\t\t\t", len(doc['RDF:RDF']['RDF:Seq'])
+    print "RDF:Description\t\t", len(doc['RDF:RDF']['RDF:Description'])
+    print "NC:BookmarkSeparator\t", len(doc['RDF:RDF']['NC:BookmarkSeparator'])
+    XRDF = {'doc':doc
+        , 'k2seq':{}
+        , 'k2desc':{}
+        , 'k2nc':{}
+        , 'root':[] #seq['RDF:li']
+        }
+    # re-index for KV points
+    print "keys doc['RDF:RDF']\n\t", doc['RDF:RDF'].keys()
+    for seq in doc['RDF:RDF']['RDF:Seq']:
+        if "urn:scrapbook:root" == seq['@RDF:about']:
+            XRDF['root'] = seq
+        else:
+            XRDF['k2seq'][seq['@RDF:about']] = seq
+    for desc in doc['RDF:RDF']['RDF:Description']:
+        XRDF['k2desc'][desc['@RDF:about']] = desc 
+    for nc in doc['RDF:RDF']['NC:BookmarkSeparator']:
+        XRDF['k2nc'][nc['@RDF:about']] = nc 
+
+    output = open(CF.PKL % os.path.basename(pathto) , 'wb')
+    print output
+    #print type(obj.RDF_RDF)
+    pickle.dump(XRDF, output)
+    return XRDF
+
+
+
+    return None   
+    
+    obj = untangle.parse("%s/scrapbook.rdf"% pathto)
+    print dir(obj.RDF_RDF.RDF_Description)
+    print "RDF:Seq\t\t\t", len(obj.RDF_RDF.RDF_Seq)
+    print "RDF_Description\t\t", len(obj.RDF_RDF.RDF_Description)
+    print "NC:BookmarkSeparator\t", len(obj.RDF_RDF.NC_BookmarkSeparator)
+
+    output = open(CF.PKL % os.path.basename(pathto) , 'wb')
+    print output
+    #print type(obj.RDF_RDF)
+    #pickle.dump(obj.RDF_RDF, output)
+    return obj.RDF_RDF
+    return None    
+    
+    
 '''
+#   140711 Alert!
+<RDF:Seq RDF:about="urn:scrapbook:search">
+</RDF:Seq>
+
+
 {'ROOT':[item,,,]
         , 'SEQ':{'itemID':[item,,,],,,}
         , 'DESC':['itemID':{'属性':'属性值',,},,,]
@@ -300,62 +379,20 @@ def exp_level_idx(pathto):
         DESC 都是最终叶子;
     
 '''
-@run_time
-def exp_root_idx(expath, drdf):
-    rdf = drdf   #pickle.load(open(pkl, 'r'))
-    bookname = os.path.basename(expath)
-    htm = ""
-    count = 0
-    loops = 0
-    for rootseq in rdf['ROOT']['li']:
-        loops += 1
-        if 0 == (loops % 2):
-            htm += '<tr><td>%s</td></tr>\n'% _seq_info(rdf, rootseq)
-        else:
-            htm += '<tr class="odd"><td>%s</td></tr>\n'% _seq_info(rdf, rootseq)
-        count += exp_sub_idx(expath, rdf, rootseq)
-    print "collected pages == ", count
-    body = htm.encode('utf8')
-    html = CF.HTM % locals()
-    #open("%s/tree/root-idx.html"% expath, 'w').write(html.encode('utf8'))
-    open("%s/tree/index.html"% expath, 'w').write(html)
-def exp_sub_idx(expath, drdf, seqid):
-    rdf = drdf   #pickle.load(open(pkl, 'r'))
-    bookname = os.path.basename(expath)    
-    body = "<tr><td><H3><a href='index.html'>back ROOT index</a></H3></td></tr>"
-    tot = 0
-    if seqid in rdf['SEQ']:
-        for subseq in rdf['SEQ'][seqid]:
-            body += '<tr><td>%s</td></tr>\n' % _seq_info(rdf, subseq)
-            if subseq in rdf['SEQ']:
-                tot += exp_if_tree(expath, rdf, seqid, subseq)
-    return tot
-
-def exp_if_tree(expath, drdf, crtseq, seqid):
-    rdf = drdf   #pickle.load(open(pkl, 'r'))
-    bookname = os.path.basename(expath)
-    treeli = ""
-    ulis = list(_uli_all_item(rdf, seqid))
-    treeli = "\n".join(ulis)
-    upback = "item%s-idx.html" % drdf['DESC'][crtseq]['id']
-    html = CF.IDX % locals()
-    open("%s/tree/%s-tree.html"% (expath, seqid),'w').write(html.encode('utf8'))
-    treeid = "%s-tree" % seqid
-    seqlevel = drdf['DESC'][seqid]['title']
-    html = CF.FSET % locals()
-    open("%s/tree/%s-frameset.html"% (expath, seqid),'w').write(html.encode('utf8'))
-    return len(ulis)
-
 def _uli_all_item(drdf, seq):
     if types.ListType is type(seq):
         for seqid in seq:
             if seqid in drdf['SEQ']:
-                yield '''<LI><a class="folder">
-                <img src="./folder.png" width="16" height="16" alt="">
-                %s</a><UL>''' % drdf['DESC'][seqid]['title']
-                for ul in _uli_all_item(drdf, drdf['SEQ'][seqid]):
-                    yield ul
-                yield "</UL></LI>"
+                #print seqid
+                if seqid not in drdf['DESC']:
+                    continue
+                else:
+                    yield '''<LI><a class="folder">
+                    <img src="./folder.png" width="16" height="16" alt="">
+                    %s</a><UL>''' % drdf['DESC'][seqid]['title']
+                    for ul in _uli_all_item(drdf, drdf['SEQ'][seqid]):
+                        yield ul
+                    yield "</UL></LI>"
             else:
                 for li in _uli_all_item(drdf, seqid):
                     yield li

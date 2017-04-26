@@ -81,7 +81,7 @@ class fixhtmlexp:
                 else:
                     print line
                     newTit='''
-                        <title>%s in zoomquiet.org
+                        <title>%s in zoomquiet.io
                         reformat by %s
                         {%s}-ScrapBook</title>
                         '''%(expname,__version__,self.daylog)           

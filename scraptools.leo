@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Created by Leo (http://leoeditor.com/leo_toc.html) -->
-<?xml-stylesheet ekr_stylesheet?>
-<leo_file xmlns:leo="http://www.leo-editor.org/2011/leo" >
+<!-- Created by Leo: http://leoeditor.com/leo_toc.html -->
+<leo_file xmlns:leo="http://leoeditor.com/namespaces/leo-python-editor/1.1" >
 <leo_header file_format="2" tnodes="0" max_tnode_index="0" clone_windows="0"/>
 <globals body_outline_ratio="0.5" body_secondary_ratio="0.5">
 	<global_window_position top="50" left="50" height="500" width="700"/>
@@ -19,7 +18,53 @@
 <v t="zoomq.20110821191131.2960"><vh>separator</vh></v>
 <v t="zoomq.20110821191131.2961"><vh>URI</vh></v>
 </v>
-<v t="zoomq.20110821191131.5287" a="E"><vh>@nosent zq_chk4scrap.py</vh>
+<v t="zoomq.20140226204618.4724" a="E"><vh>@clean expidxlevels.py</vh>
+<v t="zoomq.20140226204618.4725"><vh>&lt;&lt;imports&gt;&gt;</vh></v>
+<v t="zoomq.20140226204618.4726" a="E"><vh>&lt;&lt;define&gt;&gt;</vh>
+<v t="zoomq.20140226204618.4727" a="E"><vh>&lt;&lt;configures&gt;&gt;</vh>
+<v t="zoomq.20140226204618.4728"><vh>HTM</vh></v>
+<v t="zoomq.20140226204618.4729"><vh>boody</vh></v>
+<v t="zoomq.20140226204618.4730"><vh>ifram</vh></v>
+<v t="zoomq.20140226204618.4731"><vh>idx</vh></v>
+</v>
+</v>
+<v t="zoomq.20140226204618.4732"><vh>run_time(func)</vh></v>
+<v t="zoomq.20140226204618.4736"><vh>exp_root_idx(expath,drdf)</vh></v>
+<v t="zoomq.20140226204618.4737"><vh>exp_sub_idx(rdf,rootseq)</vh></v>
+<v t="zoomq.20140226204618.4738"><vh>exp_if_tree(rdf,rootseq)</vh></v>
+<v t="zoomq.20140710225253.4580"><vh>exp_level_idx(pathto)</vh>
+<v t="zoomq.20140710225253.4581"><vh> &lt;&lt;xmltodict.parse&gt;&gt;</vh>
+<v t="zoomq.20140710225253.4582"><vh>&lt;&lt;rm_chaos_search&gt;&gt;</vh></v>
+</v>
+<v t="zoomq.20140710225253.4583"><vh> &lt;&lt;untangle.parse&gt;&gt;</vh></v>
+<v t="zoomq.20140710225253.4584"><vh>&lt;&lt;xml.parsers.expat&gt;&gt;</vh>
+<v t="zoomq.20140710225253.4585"><vh>start_element</vh>
+<v t="zoomq.20140710225253.4586"><vh> &lt;&lt;RDF:Description&gt;&gt;</vh></v>
+<v t="zoomq.20140710225253.4587"><vh>&lt;&lt;RDF:li&gt;&gt;</vh></v>
+<v t="zoomq.20140710225253.4588"><vh>&lt;&lt;RDF:Seq&gt;&gt;</vh></v>
+</v>
+<v t="zoomq.20140710225253.4589"><vh>end_element</vh></v>
+</v>
+</v>
+<v t="zoomq.20140226204618.4739"><vh>_uli_all_item(rdf,seqid)</vh></v>
+<v t="zoomq.20140226204618.4740"><vh>_seq_info(rdf,seqid)</vh></v>
+<v t="zoomq.20140226204618.4741"><vh>_desc_info(rdf,rdfid)</vh></v>
+</v>
+<v t="zoomq.20070122144329"><vh>@clean fixhtmlexp.py</vh>
+<v t="zoomq.20070122144329.1"><vh>&lt;&lt; declarations &gt;&gt;</vh></v>
+<v t="zoomq.20070122144329.2"><vh>&lt;&lt; try &gt;&gt;</vh></v>
+<v t="zoomq.20070122144329.3"><vh>calss fixhtmlexp</vh>
+<v t="zoomq.20070122144620"><vh>__inti__()</vh></v>
+<v t="zoomq.20070122145003"><vh>idxit()</vh></v>
+<v t="zoomq.20080404224002"><vh>title()</vh></v>
+</v>
+</v>
+<v t="zoomq.20140708152848.3473"><vh>_chaos</vh>
+<v t="zoomq.20110825085230.2984"><vh>@nosent demoyield.py</vh></v>
+<v t="zoomq.20110825085230.2985"><vh>scrapbook:output.js</vh></v>
+</v>
+<v t="zoomq.20140226204618.4732"></v>
+<v t="zoomq.20110821191131.5287"><vh>@clean zq_chk4scrap.py</vh>
 <v t="zoomq.20140708152848.3467"><vh>&lt;&lt;__main__&gt;&gt;</vh></v>
 <v t="zoomq.20140708152848.3469"><vh>&lt;&lt;click&gt;&gt;</vh></v>
 <v t="zoomq.20140708152848.3468"><vh>&lt;&lt;version&gt;&gt;</vh></v>
@@ -38,11 +83,13 @@
 </v>
 </v>
 </v>
-<v t="zoomq.20140226204618.4732"><vh>run_time(func)</vh></v>
+<v t="zoomq.20140226204618.4732"></v>
 <v t="zoomq.20140226204618.4742"><vh>chk_data_dir()</vh></v>
 <v t="zoomq.20140708152848.3470"><vh>_load_pkl(REPO_NAME)</vh></v>
 <v t="zoomq.20140226204618.4733"><vh>exp_level_idx(pathto)</vh>
-<v t="zoomq.20140708152848.3487"><vh> &lt;&lt;xmltodict.parse&gt;&gt;</vh></v>
+<v t="zoomq.20140708152848.3487"><vh> &lt;&lt;xmltodict.parse&gt;&gt;</vh>
+<v t="zoomq.20140710225253.4569"><vh>&lt;&lt;rm_chaos_search&gt;&gt;</vh></v>
+</v>
 <v t="zoomq.20140708152848.3486"><vh> &lt;&lt;untangle.parse&gt;&gt;</vh></v>
 <v t="zoomq.20140708152848.3485"><vh>&lt;&lt;xml.parsers.expat&gt;&gt;</vh>
 <v t="zoomq.20140226204618.4734"><vh>start_element</vh>
@@ -53,6 +100,7 @@
 <v t="zoomq.20140226204618.4735"><vh>end_element</vh></v>
 </v>
 </v>
+<v t="zoomq.20140710225253.4568"><vh>rm_chaos_search()</vh></v>
 <v t="zoomq.20140708152848.3488"><vh>re_xmltodict_rdf()</vh>
 <v t="zoomq.20140708152848.3493"><vh>&lt;&lt;_clean_rdf&gt;&gt;</vh>
 <v t="zoomq.20140708152848.3497"><vh>&lt;&lt;cleanning&gt;&gt;</vh></v>
@@ -66,7 +114,7 @@
 </v>
 <v t="zoomq.20140708152848.3492"><vh>&lt;&lt;_print_tree_node&gt;&gt;</vh></v>
 </v>
-<v t="zoomq.20140708152848.7643" a="E"><vh>mv_chaos_data()</vh>
+<v t="zoomq.20140708152848.7643"><vh>mv_chaos_data()</vh>
 <v t="zoomq.20140708152848.7645"><vh>&lt;&lt;progressbar&gt;&gt;</vh></v>
 </v>
 <v t="zoomq.20140226204618.4746"><vh>chk_data_ids(expath,drdf)</vh></v>
@@ -75,7 +123,7 @@
 <v t="zoomq.20140708152848.3471"><vh>&lt;&lt;_exp_txt_tree&gt;&gt;</vh></v>
 </v>
 </v>
-<v t="zoomq.20140226204618.4757"><vh>@nosent scrap_re_rdf.py</vh>
+<v t="zoomq.20140226204618.4757"><vh>@clean scrap_re_rdf.py</vh>
 <v t="zoomq.20140226204618.4758"><vh>&lt;&lt;imports&gt;&gt;</vh></v>
 <v t="zoomq.20140226204618.4759" a="E"><vh>&lt;&lt;define&gt;&gt;</vh>
 <v t="zoomq.20140226204618.4760" a="E"><vh>&lt;&lt;configures&gt;&gt;</vh>
@@ -83,7 +131,7 @@
 </v>
 </v>
 <v t="zoomq.20140226204618.4761"><vh>run_time(func)</vh></v>
-<v t="zoomq.20140226204618.4762"><vh>exp_level_idx(pathto)</vh>
+<v t="zoomq.20140226204618.4762" a="E"><vh>exp_level_idx(pathto)</vh>
 <v t="zoomq.20140226204618.4763"><vh>start_element</vh></v>
 <v t="zoomq.20140226204618.4764"><vh>end_element</vh></v>
 </v>
@@ -97,38 +145,6 @@
 <v t="zoomq.20140226204618.4882"><vh>&lt;&lt;gen_seq&gt;&gt;</vh></v>
 </v>
 </v>
-</v>
-<v t="zoomq.20140226204618.4724"><vh>@nosent expidxlevels.py</vh>
-<v t="zoomq.20140226204618.4725"><vh>&lt;&lt;imports&gt;&gt;</vh></v>
-<v t="zoomq.20140226204618.4726"><vh>&lt;&lt;define&gt;&gt;</vh>
-<v t="zoomq.20140226204618.4727"><vh>&lt;&lt;configures&gt;&gt;</vh>
-<v t="zoomq.20140226204618.4728"><vh>HTM</vh></v>
-<v t="zoomq.20140226204618.4729"><vh>boody</vh></v>
-<v t="zoomq.20140226204618.4730"><vh>ifram</vh></v>
-<v t="zoomq.20140226204618.4731"><vh>idx</vh></v>
-</v>
-</v>
-<v t="zoomq.20140226204618.4732"></v>
-<v t="zoomq.20140226204618.4733"></v>
-<v t="zoomq.20140226204618.4736"><vh>exp_root_idx(expath,drdf)</vh></v>
-<v t="zoomq.20140226204618.4737"><vh>exp_sub_idx(rdf,rootseq)</vh></v>
-<v t="zoomq.20140226204618.4738"><vh>exp_if_tree(rdf,rootseq)</vh></v>
-<v t="zoomq.20140226204618.4739"><vh>_uli_all_item(rdf,seqid)</vh></v>
-<v t="zoomq.20140226204618.4740"><vh>_seq_info(rdf,seqid)</vh></v>
-<v t="zoomq.20140226204618.4741"><vh>_desc_info(rdf,rdfid)</vh></v>
-</v>
-<v t="zoomq.20070122144329"><vh>@nosent fixhtmlexp.py</vh>
-<v t="zoomq.20070122144329.1"><vh>&lt;&lt; declarations &gt;&gt;</vh></v>
-<v t="zoomq.20070122144329.2"><vh>&lt;&lt; try &gt;&gt;</vh></v>
-<v t="zoomq.20070122144329.3"><vh>calss fixhtmlexp</vh>
-<v t="zoomq.20070122144620"><vh>__inti__()</vh></v>
-<v t="zoomq.20070122145003"><vh>idxit()</vh></v>
-<v t="zoomq.20080404224002"><vh>title()</vh></v>
-</v>
-</v>
-<v t="zoomq.20140708152848.3473"><vh>_chaos</vh>
-<v t="zoomq.20110825085230.2984"><vh>@nosent demoyield.py</vh></v>
-<v t="zoomq.20110825085230.2985"><vh>scrapbook:output.js</vh></v>
 </v>
 <v t="zoomq.20110821191131.2956"><vh>tpl</vh></v>
 </v>
@@ -247,7 +263,7 @@ def __init__(self):
             else:
                 print line
                 newTit='''
-                    &lt;title&gt;%s in zoomquiet.org
+                    &lt;title&gt;%s in zoomquiet.io
                     reformat by %s
                     {%s}-ScrapBook&lt;/title&gt;
                     '''%(expname,__version__,self.daylog)           
@@ -664,7 +680,8 @@ mes dir is: 0
 @tabwidth -4
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-VERSION = "expidxlevels.py v11.08.29"
+#VERSION = "expidxlevels.py v11.08.29"
+VERSION = "expidxlevels.py v17.4.26"
 &lt;&lt;imports&gt;&gt;
 &lt;&lt;define&gt;&gt;
 
@@ -700,6 +717,10 @@ $ python /path/2/expidxlevels.py /path/2/MyScrapBook/
 </t>
 <t tx="zoomq.20140226204618.4725">import os
 import sys
+# 解决写文件 'ascii' codec can't encode characters 问题
+# base http://blog.csdn.net/zuyi532/article/details/8851316
+reload(sys)  
+sys.setdefaultencoding('utf8')   
 import pickle
 import types
 import time
@@ -736,6 +757,10 @@ CF = Borg()
 </t>
 <t tx="zoomq.20140226204618.4727">#path
 RDF = "%s/scrapbook.rdf"
+RERDF = '_chaos/scrapbook_%s.rdf'
+PKL = '_chaos/scraptools_%s.pkl'
+TREE = '_chaos/tree4_%s.txt'
+STUFF = '_stuff/'
 
 @others
 
@@ -773,39 +798,43 @@ HTM = '''&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;
 	&lt;meta http-equiv="Content-Type" content="text/html;charset=UTF-8"&gt;
 	&lt;meta http-equiv="Content-Style-Type" content="text/css"&gt;
 	&lt;meta http-equiv="Content-Script-Type" content="text/javascript"&gt;
-	&lt;title&gt;{%(bookname)s} index tree exp. As HTML - ScrapBook&lt;/title&gt;
+	&lt;title&gt;{%(bookname)s} index tree export into iFrame - ScrapBook Collection by Zoom.Quiet &lt;/title&gt;
 	&lt;link rel="stylesheet" type="text/css" href="./output.css" media="all"&gt;
 
 &lt;/head&gt;
 '''
 </t>
 <t tx="zoomq.20140226204618.4729">HTM += '''&lt;body&gt;
-&lt;H3&gt;ZQ's &lt;a href="http://amb.vis.ne.jp/mozilla/scrapbook/"&gt;SCRAPBOOK&lt;/a&gt; Repo.:{%(bookname)s} root index&lt;/H3&gt;
+&lt;H4&gt;&lt;a href="http://zoomquiet.io"&gt;Zoom.Quiet&lt;/a&gt;'s 
+&lt;a href="http://amb.vis.ne.jp/mozilla/scrapbook/"&gt;SCRAPBOOK&lt;/a&gt; 
+Repo.&lt;b&gt;/%(bookname)s/&lt;/b&gt; index
+&lt;/H4&gt;
     &lt;table&gt;
     %(body)s
     &lt;/table&gt;
-
 
 &lt;hr/&gt;
 &lt;div id="poweredby"&gt;
 &lt;H4&gt;USAGE&lt;/H4&gt;
 &lt;ul&gt;
-&lt;li&gt;Author: &lt;a href="http://about.me/zoom.quiet"&gt;Zoom Quiet (zoom.quiet) on about.me&lt;/a&gt;
+&lt;li&gt;Author: &lt;a href="http://zoomquiet.io"&gt;ZoomQuiet.io&lt;/a&gt; 
+(&lt;a href="mailto:zoomquiet+io[AT]gmail.com"&gt;zoom.quiet&lt;/a&gt;)
     &lt;/li&gt;
 &lt;li&gt;Tools: &lt;a href="https://bitbucket.org/ZoomQuiet/scraptools"&gt;ZoomQuiet / scraptools — Bitbucket&lt;/a&gt;
     &lt;/li&gt;
 &lt;li&gt;Licenses: &lt;a href="http://creativecommons.org/licenses/by-sa/2.5/cn/"&gt;CC(by-sa)2.5&lt;/a&gt;
-    (expect originality licenses of pages)
+    (expect originality licenses of all pages)
     &lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;hr/&gt;
 &lt;b&gt;powered by:&lt;/b&gt;
     &lt;a href="http://www.python.org/"&gt;Python&lt;/a&gt;
     ,&lt;a href="http://amb.vis.ne.jp/mozilla/scrapbook/"&gt;SCRAPBOOK&lt;/a&gt;
     ,&lt;a href="http://webpages.charter.net/edreamleo/front.html"&gt;Leo&lt;/a&gt;
     ,&lt;a href="http://www.catb.org/hacker-emblem/"&gt;Hacker&lt;/a&gt;
-
- &lt;/a&gt;
+    ,&lt;a href="http://www.qiniu.com/"&gt;
+        &lt;img src="https://avatars1.githubusercontent.com/u/1563636?s=24"&gt;&lt;/a&gt; 
 &lt;/div&gt;
 
 &lt;/body&gt;
@@ -816,7 +845,8 @@ HTM = '''&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;
 &lt;html&gt;
 &lt;head&gt;
 	&lt;meta http-equiv="Content-Type" Content="text/html;charset=UTF-8"&gt;
-	&lt;title&gt;Output {%(seqlevel)s} As HTML Tree - ScrapBook&lt;/title&gt;
+	&lt;title&gt;exported {%(seqlevel)s} as iFrame Tree 
+    - ScrapBook Collection by Zoom.Quiet&lt;/title&gt;
 &lt;/head&gt;
 &lt;frameset cols="200,*"&gt;
 	&lt;frame id="side" name="side" src="./%(treeid)s.html"&gt;
@@ -835,7 +865,7 @@ HTM = '''&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;
 	&lt;meta http-equiv="Content-Type" content="text/html;charset=UTF-8"&gt;
 	&lt;meta http-equiv="Content-Style-Type" content="text/css"&gt;
 	&lt;meta http-equiv="Content-Script-Type" content="text/javascript"&gt;
-	&lt;title&gt;Output As HTML - ScrapBook&lt;/title&gt;
+	&lt;title&gt;extput As iFrame - ScrapBook Collection by Zoom.Quiet&lt;/title&gt;
 	&lt;link rel="stylesheet" type="text/css" href="./output.css" media="all"&gt;
 	&lt;script type="text/javascript" language="JavaScript"&gt;&lt;!--
 	function toggle(aID) {
@@ -894,6 +924,11 @@ def exp_level_idx(pathto):
     &lt;&lt;xml.parsers.expat&gt;&gt;
 
 '''
+#   140711 Alert!
+&lt;RDF:Seq RDF:about="urn:scrapbook:search"&gt;
+&lt;/RDF:Seq&gt;
+
+
 {'ROOT':[item,,,]
         , 'SEQ':{'itemID':[item,,,],,,}
         , 'DESC':['itemID':{'属性':'属性值',,},,,]
@@ -946,6 +981,10 @@ def exp_root_idx(expath, drdf):
     html = CF.HTM % locals()
     #open("%s/tree/root-idx.html"% expath, 'w').write(html.encode('utf8'))
     open("%s/tree/index.html"% expath, 'w').write(html)
+    body = u"&lt;h1&gt;是也乎,(￣▽￣)&lt;h1/&gt;&lt;h2&gt;~ Sayeahooo!&lt;/h2&gt;"
+    html = CF.HTM % locals()
+    open("%s/tree/main.html"% expath, 'w').write(html)
+
 </t>
 <t tx="zoomq.20140226204618.4737">def exp_sub_idx(expath, drdf, seqid):
     rdf = drdf   #pickle.load(open(pkl, 'r'))
@@ -980,12 +1019,16 @@ def exp_root_idx(expath, drdf):
     if types.ListType is type(seq):
         for seqid in seq:
             if seqid in drdf['SEQ']:
-                yield '''&lt;LI&gt;&lt;a class="folder"&gt;
-                &lt;img src="./folder.png" width="16" height="16" alt=""&gt;
-                %s&lt;/a&gt;&lt;UL&gt;''' % drdf['DESC'][seqid]['title']
-                for ul in _uli_all_item(drdf, drdf['SEQ'][seqid]):
-                    yield ul
-                yield "&lt;/UL&gt;&lt;/LI&gt;"
+                #print seqid
+                if seqid not in drdf['DESC']:
+                    continue
+                else:
+                    yield '''&lt;LI&gt;&lt;a class="folder"&gt;
+                    &lt;img src="./folder.png" width="16" height="16" alt=""&gt;
+                    %s&lt;/a&gt;&lt;UL&gt;''' % drdf['DESC'][seqid]['title']
+                    for ul in _uli_all_item(drdf, drdf['SEQ'][seqid]):
+                        yield ul
+                    yield "&lt;/UL&gt;&lt;/LI&gt;"
             else:
                 for li in _uli_all_item(drdf, seqid):
                     yield li
@@ -1477,11 +1520,12 @@ else:
     MYBOOK = os.path.abspath(sys.argv[1])
     REPO_NAME = os.path.basename(MYBOOK)
     #print REPO_NAME
-    XRDF = exp_level_idx(MYBOOK)
-    #XRDF = _load_pkl(REPO_NAME)
-    re_xmltodict_rdf(REPO_NAME, XRDF)
-    mv_chaos_data(REPO_NAME, XRDF)
-    #chk_data_ids(MYBOOK, XRDF)
+    #XRDF = exp_level_idx(MYBOOK)
+    XRDF = _load_pkl(REPO_NAME)
+    rm_chaos_search(REPO_NAME, XRDF)
+    #re_xmltodict_rdf(REPO_NAME, XRDF)
+    #mv_chaos_data(REPO_NAME, XRDF)
+    #   chk_data_ids(MYBOOK, XRDF)
     #   exp_root_idx(MYBOOK, XRDF)
     #   chk_data_dir(MYBOOK)
     #exp_rdf_tree(MYBOOK, XRDF)
@@ -1728,6 +1772,9 @@ return obj.RDF_RDF
 </t>
 <t tx="zoomq.20140708152848.3487">doc = xmltodict.parse(open("%s/scrapbook.rdf"% pathto, 'r').read())
 #print dir(doc)
+'''
+&lt;&lt;rm_chaos_search&gt;&gt;
+'''
 print doc.keys()
 print "RDF:Seq\t\t\t", len(doc['RDF:RDF']['RDF:Seq'])
 print "RDF:Description\t\t", len(doc['RDF:RDF']['RDF:Description'])
@@ -1738,12 +1785,8 @@ XRDF = {'doc':doc
     , 'k2nc':{}
     , 'root':[] #seq['RDF:li']
     }
-# re-index by RDF:about|
+# re-index for KV points
 print "keys doc['RDF:RDF']\n\t", doc['RDF:RDF'].keys()
-#print "keys doc['RDF:RDF']['RDF:Seq']", doc['RDF:RDF']['RDF:Seq'].keys()
-#print "keys doc['RDF:RDF']['RDF:Description']", doc['RDF:RDF']['RDF:Description'].keys()
-#print "doc['RDF:RDF']['RDF:Description']", len(doc['RDF:RDF']['RDF:Description'])
-#return None
 for seq in doc['RDF:RDF']['RDF:Seq']:
     if "urn:scrapbook:root" == seq['@RDF:about']:
         XRDF['root'] = seq
@@ -1932,8 +1975,7 @@ else:
 print "\nchaos notes:\t", ccount
 print "clean DESC:\t", len(RDF_DESC)
 </t>
-<t tx="zoomq.20140708152848.7641">max_action = len(RDF_DESC) - len(RIGHT_NODES)
-
+<t tx="zoomq.20140708152848.7641">max_action = len(RDF_DESC)# - len(RIGHT_NODES)
 #(end=max_action, width=79)
 opt_pbar = {'end':max_action, 'width':64
     , 'fill': '&gt;'
@@ -1953,7 +1995,8 @@ print output
 pickle.dump(XRDF, output)
 
 </t>
-<t tx="zoomq.20140708152848.7643">def mv_chaos_data(REPO_NAME, XRDF):
+<t tx="zoomq.20140708152848.7643">@run_time
+def mv_chaos_data(REPO_NAME, XRDF):
     """对比 data/ 目录和有效节点 ID
     - mv 文章目录到指定备案目录 CF.STUFF
     """
@@ -2002,6 +2045,192 @@ opt_pbar = {'end':max_action, 'width':64
     , 'fill': '&gt;'
     }
 pbar = progressbar.AnimatedProgressBar(**opt_pbar)
+</t>
+<t tx="zoomq.20140710225253.4568">@run_time
+def rm_chaos_search(REPO_NAME, XRDF):
+    """Must empty as:
+    &lt;RDF:Seq RDF:about="urn:scrapbook:search"&gt;
+    &lt;/RDF:Seq&gt;
+    """
+    RDFD = XRDF['doc']['RDF:RDF']
+    for seq in RDFD['RDF:Seq']:
+        if 'urn:scrapbook:search' == seq['@RDF:about']:
+            print "son of urn:scrapbook:search:", len(seq['RDF:li'])
+            seq.pop('RDF:li')
+            break
+    open(CF.RERDF % REPO_NAME, "w").write(
+        xmltodict.unparse(XRDF['doc'], pretty=True))
+    return None
+    </t>
+<t tx="zoomq.20140710225253.4569">for seq in doc['RDF:RDF']['RDF:Seq']:
+    if 'urn:scrapbook:search' == seq['@RDF:about']:
+        print dir(seq)
+        print seq.keys()
+        print "son of urn:scrapbook:search:", len(seq['RDF:li'])
+        seq.pop('RDF:li')
+        break
+
+
+
+</t>
+<t tx="zoomq.20140710225253.4580">@run_time
+def exp_level_idx(pathto):
+    '''解析现有 rdf 为 py 数据对象来快速理解/清查
+    '''
+    #print pathto, CF.RDF% pathto, os.path.basename(pathto)
+    print "%s/scrapbook.rdf"% pathto 
+    &lt;&lt;xml.parsers.expat&gt;&gt;
+    return None   
+    
+    &lt;&lt;xmltodict.parse&gt;&gt;
+    return None   
+    
+    &lt;&lt;untangle.parse&gt;&gt;
+    return None    
+    
+    
+'''
+#   140711 Alert!
+&lt;RDF:Seq RDF:about="urn:scrapbook:search"&gt;
+&lt;/RDF:Seq&gt;
+
+
+{'ROOT':[item,,,]
+        , 'SEQ':{'itemID':[item,,,],,,}
+        , 'DESC':['itemID':{'属性':'属性值',,},,,]
+    }
+    ROOT 结点 -&gt; [SEQ|DESC]
+        SEQ 都是目录;
+        DESC 都是最终叶子;
+    
+'''</t>
+<t tx="zoomq.20140710225253.4581">doc = xmltodict.parse(open("%s/scrapbook.rdf"% pathto, 'r').read())
+#print dir(doc)
+'''
+&lt;&lt;rm_chaos_search&gt;&gt;
+'''
+print doc.keys()
+print "RDF:Seq\t\t\t", len(doc['RDF:RDF']['RDF:Seq'])
+print "RDF:Description\t\t", len(doc['RDF:RDF']['RDF:Description'])
+print "NC:BookmarkSeparator\t", len(doc['RDF:RDF']['NC:BookmarkSeparator'])
+XRDF = {'doc':doc
+    , 'k2seq':{}
+    , 'k2desc':{}
+    , 'k2nc':{}
+    , 'root':[] #seq['RDF:li']
+    }
+# re-index for KV points
+print "keys doc['RDF:RDF']\n\t", doc['RDF:RDF'].keys()
+for seq in doc['RDF:RDF']['RDF:Seq']:
+    if "urn:scrapbook:root" == seq['@RDF:about']:
+        XRDF['root'] = seq
+    else:
+        XRDF['k2seq'][seq['@RDF:about']] = seq
+for desc in doc['RDF:RDF']['RDF:Description']:
+    XRDF['k2desc'][desc['@RDF:about']] = desc 
+for nc in doc['RDF:RDF']['NC:BookmarkSeparator']:
+    XRDF['k2nc'][nc['@RDF:about']] = nc 
+
+output = open(CF.PKL % os.path.basename(pathto) , 'wb')
+print output
+#print type(obj.RDF_RDF)
+pickle.dump(XRDF, output)
+return XRDF
+
+
+
+</t>
+<t tx="zoomq.20140710225253.4582">for seq in doc['RDF:RDF']['RDF:Seq']:
+    if 'urn:scrapbook:search' == seq['@RDF:about']:
+        print dir(seq)
+        print seq.keys()
+        print "son of urn:scrapbook:search:", len(seq['RDF:li'])
+        seq.pop('RDF:li')
+        break
+
+
+
+</t>
+<t tx="zoomq.20140710225253.4583">obj = untangle.parse("%s/scrapbook.rdf"% pathto)
+print dir(obj.RDF_RDF.RDF_Description)
+print "RDF:Seq\t\t\t", len(obj.RDF_RDF.RDF_Seq)
+print "RDF_Description\t\t", len(obj.RDF_RDF.RDF_Description)
+print "NC:BookmarkSeparator\t", len(obj.RDF_RDF.NC_BookmarkSeparator)
+
+output = open(CF.PKL % os.path.basename(pathto) , 'wb')
+print output
+#print type(obj.RDF_RDF)
+#pickle.dump(obj.RDF_RDF, output)
+return obj.RDF_RDF
+</t>
+<t tx="zoomq.20140710225253.4584">@others
+px = xml.parsers.expat.ParserCreate()
+px.StartElementHandler = start_element
+px.EndElementHandler = end_element
+px.Parse(open(CF.RDF % pathto).read(), 1)
+output = open(CF.PKL % os.path.basename(pathto) , 'wb')
+pickle.dump(CF.DICTRDF, output)
+#output.close
+return CF.DICTRDF
+
+</t>
+<t tx="zoomq.20140710225253.4585">def start_element(name, attrs):
+    #print 'Start element:', name, attrs
+    if "RDF:Seq" == name:
+        &lt;&lt;RDF:Seq&gt;&gt;
+    else:
+        CF.IS_SEQ = 0
+        if "RDF:li" == name:
+            &lt;&lt;RDF:li&gt;&gt;
+        elif "RDF:Description" == name:
+            &lt;&lt;RDF:Description&gt;&gt;
+
+
+
+
+
+
+</t>
+<t tx="zoomq.20140710225253.4586">CF.IS_DESC = 1
+CF.IS_LI = 0
+CF.CRTID = attrs['RDF:about'].split(":")[-1]
+CF.DICTRDF['DESC'][CF.CRTID] = {
+    'id':attrs['NS2:id']
+    ,'type':attrs['NS2:type']
+    ,'title':attrs['NS2:title']#.encode('utf8')
+    ,'source':attrs['NS2:source']
+    ,'chars':attrs['NS2:chars']
+    ,'icon':attrs['NS2:icon']
+    ,'comment':attrs['NS2:comment']
+    }
+
+</t>
+<t tx="zoomq.20140710225253.4587">CF.IS_DESC = 0
+CF.IS_LI = 1
+if CF.IS_ROOT:
+    CF.DICTRDF['ROOT']['li'].append(attrs['RDF:resource'].split(":")[-1])
+else:
+    CF.DICTRDF['SEQ'][CF.CRTID].append(attrs['RDF:resource'].split(":")[-1])
+</t>
+<t tx="zoomq.20140710225253.4588">CF.IS_SEQ = 1
+CF.IS_DESC = 0
+if "urn:scrapbook:root" == attrs['RDF:about']:
+    #print 'ROOT element:', name, attrs
+    CF.IS_ROOT = 1
+    CF.DICTRDF['ROOT']['id'] = attrs['RDF:about'].split(":")[-1]
+    CF.CRTID = attrs['RDF:about'].split(":")[-1]
+    CF.DICTRDF['ROOT']['li'] = []
+else:
+    CF.IS_ROOT = 0
+    CF.CRTID = attrs['RDF:about'].split(":")[-1]
+    CF.DICTRDF['SEQ'][CF.CRTID] = []
+</t>
+<t tx="zoomq.20140710225253.4589">def end_element(name):
+    if "RDF:Seq" == name:
+        if CF.IS_ROOT:
+            CF.IS_ROOT = 0
+        else:
+            pass
 </t>
 </tnodes>
 </leo_file>
