@@ -16,7 +16,9 @@
 </v>
 <v t="zoomq.20200704152503.2"><vh>&lt;&lt;__main__&gt;&gt;</vh></v>
 <v t="zoomq.20200704154007.1"><vh>append()</vh></v>
-<v t="zoomq.20200704155016.1"><vh>_replace_inc()</vh></v>
+<v t="zoomq.20200704155016.1"><vh>_replace_inc()</vh>
+<v t="zoomq.20200704155554.1"><vh>chk ::...</vh></v>
+</v>
 <v t="zoomq.20200704154707.1"><vh>_page_walker()</vh></v>
 </v>
 <v t="zoomq.20110821191131.2957"><vh>readme.txt</vh>
@@ -2349,6 +2351,10 @@ CF = Borg()
 AIM = 'index.html'
 INC = 'append.html'
 
+TAG0 = '::...'
+TAG1 = '...::'
+TAGb = '&lt;/body&gt;'
+
 
 @others
 </t>
@@ -2367,7 +2373,7 @@ INC = 'append.html'
 </t>
 <t tx="zoomq.20200704154007.1">def append(troot,sroot,bname):
     #print(troot,sroot,bname)
-    print(CF.AIM)
+    #print(CF.AIM)
     _inc = '%s/%s'%(troot, CF.INC)
     _pages = '%s/%s'%(sroot, CF.PAGE)
     #print(_inc, _pages)
@@ -2375,17 +2381,83 @@ INC = 'append.html'
     _inc_htm = open(_inc,'r').read()
     #print(_inc_htm)
     _aim_pages = _page_walker(sroot)
-    _replace_inc(_aim_pages)
-    return None</t>
+    print('\n replace ScrapBook-s-pages in', bname)
+    _replace_inc(_aim_pages,sroot,_inc_htm)
+    return None
+
+
+</t>
 <t tx="zoomq.20200704154707.1">def _page_walker(sroot):
     _pages = '%s/%s'%(sroot, CF.PAGE)
-    print(_pages)
+    #print(_pages)
     _subs = os.listdir(_pages)
-    print(len(_subs),_subs[0])
+    #print(len(_subs),_subs[0])
     
     return _subs</t>
-<t tx="zoomq.20200704155016.1">def _replace_inc(subs):
-    print(len(subs),subs[0])
-    return None</t>
+<t tx="zoomq.20200704155016.1">def _replace_inc(subs,sroot,_inc):
+    #print(len(subs),subs[0])
+    #print('subs[0]', subs[0], _aim)
+    for p in subs:
+        _aim = '{}/{}/{}/{}'.format(sroot
+                , CF.PAGE
+                , p
+                , CF.AIM)
+        if os.path.exists(_aim):
+            _htm = open(_aim,'r').readlines()
+            print(_aim)
+            @others
+        else:
+            continue
+    
+    return None
+    
+    
+
+
+
+
+</t>
+<t tx="zoomq.20200704155554.1">_exp = ''
+isTAG0 = 0
+isTAG1 = 0
+noTAG = 0
+for l in _htm:
+    if CF.TAG0 == l[:5]:
+        #print('got&gt;&gt;&gt;',CF.TAG0)
+        isTAG0 = 1
+        _exp += l
+    elif CF.TAG1 == l[:5]:
+        #print('got&lt;&lt;&lt;',CF.TAG1)
+        isTAG1 = 1
+        _exp += _inc
+        _exp += l
+    elif CF.TAGb in l:
+        #print('TAGb ~&gt; ',l)
+        if isTAG0 or isTAG1:
+            pass
+        else:
+            noTAG = 1
+            _exp += '\n%s\n'%CF.TAG0
+            _exp += _inc
+            _exp += '\n%s\n'%CF.TAG1
+            _exp += l
+    else:
+        if isTAG0:
+            pass
+        else:
+            _exp += l
+
+#print(_exp)
+open(_aim,'w').write(_exp)
+
+
+
+
+
+
+
+
+
+</t>
 </tnodes>
 </leo_file>
