@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Created by Leo: http://leoeditor.com/leo_toc.html -->
 <leo_file xmlns:leo="http://leoeditor.com/namespaces/leo-python-editor/1.1" >
-<leo_header file_format="2" tnodes="0" max_tnode_index="0" clone_windows="0"/>
-<globals body_outline_ratio="0.5" body_secondary_ratio="0.5">
-	<global_window_position top="50" left="50" height="500" width="700"/>
-	<global_log_window_position top="0" left="0" height="0" width="0"/>
-</globals>
+<leo_header file_format="2"/>
+<globals/>
 <preferences/>
 <find_panel_settings/>
 <vnodes>
 <v t="zoomq.20110821191131.2934"><vh>@chapters</vh></v>
-<v t="zoomq.20070122144132" a="E"><vh>ScrapBook tools</vh>
+<v t="zoomq.20070122144132"><vh>ScrapBook tools</vh>
+<v t="zoomq.20200704152503.1"><vh>@clean append_ann.py</vh>
+<v t="zoomq.20200704152934.1"><vh>&lt;&lt;notes&gt;&gt;</vh></v>
+<v t="zoomq.20200704152503.5"><vh>&lt;&lt;imports&gt;&gt;</vh></v>
+<v t="zoomq.20200704152503.6"><vh>&lt;&lt;define&gt;&gt;</vh>
+<v t="zoomq.20200704152503.7"><vh>&lt;&lt;configures&gt;&gt;</vh></v>
+</v>
+<v t="zoomq.20200704152503.2"><vh>&lt;&lt;__main__&gt;&gt;</vh></v>
+<v t="zoomq.20200704154007.1"><vh>append()</vh></v>
+<v t="zoomq.20200704155016.1"><vh>_replace_inc()</vh></v>
+<v t="zoomq.20200704154707.1"><vh>_page_walker()</vh></v>
+</v>
 <v t="zoomq.20110821191131.2957"><vh>readme.txt</vh>
+<v t="zoomq.20200704152010.1"><vh>&lt;&lt;du&gt;&gt;</vh></v>
 <v t="zoomq.20140226204618.4705"><vh>&lt;&lt;scan&gt;&gt;</vh></v>
 <v t="zoomq.20110821191131.2959"><vh>root</vh></v>
 <v t="zoomq.20110821191131.2958"><vh>node</vh></v>
@@ -21,7 +30,7 @@
 <v t="zoomq.20140226204618.4724"><vh>@clean expidxlevels.py</vh>
 <v t="zoomq.20140226204618.4725"><vh>&lt;&lt;imports&gt;&gt;</vh></v>
 <v t="zoomq.20140226204618.4726"><vh>&lt;&lt;define&gt;&gt;</vh>
-<v t="zoomq.20140226204618.4727" a="E"><vh>&lt;&lt;configures&gt;&gt;</vh>
+<v t="zoomq.20140226204618.4727"><vh>&lt;&lt;configures&gt;&gt;</vh>
 <v t="zoomq.20140226204618.4728"><vh>HTM</vh></v>
 <v t="zoomq.20140226204618.4729"><vh>boody</vh></v>
 <v t="zoomq.20140226204618.4730"><vh>ifram</vh></v>
@@ -108,7 +117,7 @@
 <v t="zoomq.20140708152848.7641"><vh>&lt;&lt;progressbar&gt;&gt;</vh></v>
 </v>
 <v t="zoomq.20140708152848.3489"><vh>&lt;&lt;_walk_rdf_tree&gt;&gt;</vh>
-<v t="zoomq.20140708152848.3490" a="E"><vh>chk matters</vh>
+<v t="zoomq.20140708152848.3490"><vh>chk matters</vh>
 <v t="zoomq.20140708152848.3491"><vh>&lt;&lt;in SEQ&gt;&gt;</vh></v>
 </v>
 </v>
@@ -125,19 +134,19 @@
 </v>
 <v t="zoomq.20140226204618.4757"><vh>@clean scrap_re_rdf.py</vh>
 <v t="zoomq.20140226204618.4758"><vh>&lt;&lt;imports&gt;&gt;</vh></v>
-<v t="zoomq.20140226204618.4759" a="E"><vh>&lt;&lt;define&gt;&gt;</vh>
-<v t="zoomq.20140226204618.4760" a="E"><vh>&lt;&lt;configures&gt;&gt;</vh>
+<v t="zoomq.20140226204618.4759"><vh>&lt;&lt;define&gt;&gt;</vh>
+<v t="zoomq.20140226204618.4760"><vh>&lt;&lt;configures&gt;&gt;</vh>
 <v t="zoomq.20140226204618.4874"><vh>RDF</vh></v>
 </v>
 </v>
 <v t="zoomq.20140226204618.4761"><vh>run_time(func)</vh></v>
-<v t="zoomq.20140226204618.4762" a="E"><vh>exp_level_idx(pathto)</vh>
+<v t="zoomq.20140226204618.4762"><vh>exp_level_idx(pathto)</vh>
 <v t="zoomq.20140226204618.4763"><vh>start_element</vh></v>
 <v t="zoomq.20140226204618.4764"><vh>end_element</vh></v>
 </v>
 <v t="zoomq.20140226204618.4765"><vh>chk_data_dir()</vh></v>
 <v t="zoomq.20140226204618.4766"><vh>chk_data_ids(expath,drdf)</vh>
-<v t="zoomq.20140226204618.4876" a="E"><vh>&lt;&lt;gen_seqs&gt;&gt;</vh>
+<v t="zoomq.20140226204618.4876"><vh>&lt;&lt;gen_seqs&gt;&gt;</vh>
 <v t="zoomq.20140226204618.4877"><vh>&lt;&lt;gen_seq&gt;&gt;</vh></v>
 </v>
 <v t="zoomq.20140226204618.4875"><vh>&lt;&lt;gen_desc&gt;&gt;</vh></v>
@@ -297,8 +306,11 @@ $ python scraptools/expidxlevels.py /home/zoomq/zdata/zScrapBook/ZqFLOSS/
 collected pages ==  30874
 	exp_root_idx() RUNed~ 338.19604 ms
 
+&lt;&lt;du&gt;&gt;
+
 == scan ==
 &lt;&lt;scan&gt;&gt;
+
 
 == TODO ==
 - 将原始链接,嵌入到所有页面提示中
@@ -2232,5 +2244,148 @@ else:
         else:
             pass
 </t>
+<t tx="zoomq.20200704152010.1">## 200704 
+~/mnt/KuaiPan/zScrapBook༽
+༄  du -hs *
+...
+1.6G	ZqDevRel
+2.9G	ZqFLOSS
+1003M	ZqKss
+8.1G	ZqSKM
+
+874M	ZqWks
+470M	ZqXes
+51M	_chaos
+2.5G	backup
+23M	ls1R.log
+11M	ls1R_egrep_img.log
+584K	scrapbooktools
+4.0K	scraptools
+
+1.3G	zqCoder
+4.8G	zqDevRes
+4.7G	zqPythonic
+4.0G	zqSCM
+3.4G	zqSMM
+</t>
+<t tx="zoomq.20200704152503.1">@language python
+@tabwidth -4
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+&lt;&lt;notes&gt;&gt;
+
+&lt;&lt;imports&gt;&gt;
+VERSION = "append_ann.py v200704.1542"
+&lt;&lt;define&gt;&gt;
+
+@others
+
+if __name__ == "__main__":
+    #cli(obj={})
+
+    &lt;&lt;__main__&gt;&gt;
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</t>
+<t tx="zoomq.20200704152503.2">if 2 != len(sys.argv):
+    print("""替换所有 ScrapBook 页面缀文
+usage::
+$ python /path/2/append_ann.py /path/2/MyScrapBook/
+        |                       +- ScrapBook 收藏入口目录
+        +- 指出脚本自身
+by  %s 
+    """ % VERSION)
+else:
+    TPATH = os.path.dirname(os.path.abspath(sys.argv[0]))
+    MYBOOK = os.path.abspath(sys.argv[1])
+    REPO_NAME = os.path.basename(MYBOOK)
+    #print(TPATH,MYBOOK,REPO_NAME)
+    append(TPATH,MYBOOK,REPO_NAME)
+    #print REPO_NAME
+    #XRDF = exp_level_idx(MYBOOK)
+    #re_xmltodict_rdf(REPO_NAME, XRDF)
+    #mv_chaos_data(REPO_NAME, XRDF)
+    #   chk_data_ids(MYBOOK, XRDF)
+    #   exp_root_idx(MYBOOK, XRDF)
+    #   chk_data_dir(MYBOOK)
+    #exp_rdf_tree(MYBOOK, XRDF)
+
+</t>
+<t tx="zoomq.20200704152503.5">import os
+import sys
+import time
+import shutil
+
+</t>
+<t tx="zoomq.20200704152503.6">class Borg():
+    '''base http://blog.youxu.info/2010/04/29/borg
+        - 单例式配置收集类
+    '''
+    __collective_mind = {}
+    def __init__(self):
+        self.__dict__ = self.__collective_mind
+
+    &lt;&lt;configures&gt;&gt;
+
+# init all cfg. var
+CF = Borg()
+
+</t>
+<t tx="zoomq.20200704152503.7">PAGE = 'data'
+AIM = 'index.html'
+INC = 'append.html'
+
+
+@others
+</t>
+<t tx="zoomq.20200704152934.1">'''主要行为:
+    检验已经追加 _ann
+    如果没有 就追加
+    已经有, 就替换
+
+
+::...
+替换区
+...::
+&lt;/body&gt;
+
+'''
+</t>
+<t tx="zoomq.20200704154007.1">def append(troot,sroot,bname):
+    #print(troot,sroot,bname)
+    print(CF.AIM)
+    _inc = '%s/%s'%(troot, CF.INC)
+    _pages = '%s/%s'%(sroot, CF.PAGE)
+    #print(_inc, _pages)
+    
+    _inc_htm = open(_inc,'r').read()
+    #print(_inc_htm)
+    _aim_pages = _page_walker(sroot)
+    _replace_inc(_aim_pages)
+    return None</t>
+<t tx="zoomq.20200704154707.1">def _page_walker(sroot):
+    _pages = '%s/%s'%(sroot, CF.PAGE)
+    print(_pages)
+    _subs = os.listdir(_pages)
+    print(len(_subs),_subs[0])
+    
+    return _subs</t>
+<t tx="zoomq.20200704155016.1">def _replace_inc(subs):
+    print(len(subs),subs[0])
+    return None</t>
 </tnodes>
 </leo_file>
