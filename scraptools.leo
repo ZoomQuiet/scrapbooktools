@@ -18,9 +18,9 @@
 <v t="zoomq.20110821191131.2960"><vh>separator</vh></v>
 <v t="zoomq.20110821191131.2961"><vh>URI</vh></v>
 </v>
-<v t="zoomq.20140226204618.4724" a="E"><vh>@clean expidxlevels.py</vh>
+<v t="zoomq.20140226204618.4724"><vh>@clean expidxlevels.py</vh>
 <v t="zoomq.20140226204618.4725"><vh>&lt;&lt;imports&gt;&gt;</vh></v>
-<v t="zoomq.20140226204618.4726" a="E"><vh>&lt;&lt;define&gt;&gt;</vh>
+<v t="zoomq.20140226204618.4726"><vh>&lt;&lt;define&gt;&gt;</vh>
 <v t="zoomq.20140226204618.4727" a="E"><vh>&lt;&lt;configures&gt;&gt;</vh>
 <v t="zoomq.20140226204618.4728"><vh>HTM</vh></v>
 <v t="zoomq.20140226204618.4729"><vh>boody</vh></v>
@@ -820,7 +820,7 @@ Repo.&lt;b&gt;/%(bookname)s/&lt;/b&gt; index
 &lt;li&gt;Author: &lt;a href="http://zoomquiet.io"&gt;ZoomQuiet.io&lt;/a&gt; 
 (&lt;a href="mailto:zoomquiet+io[AT]gmail.com"&gt;zoom.quiet&lt;/a&gt;)
     &lt;/li&gt;
-&lt;li&gt;Tools: &lt;a href="https://bitbucket.org/ZoomQuiet/scraptools"&gt;ZoomQuiet / scraptools — Bitbucket&lt;/a&gt;
+&lt;li&gt;Tools: &lt;a href="https://github.com/ZoomQuiet/scrapbooktools"&gt;ZoomQuiet / scraptools — GitHub&lt;/a&gt;
     &lt;/li&gt;
 &lt;li&gt;Licenses: &lt;a href="http://creativecommons.org/licenses/by-sa/2.5/cn/"&gt;CC(by-sa)2.5&lt;/a&gt;
     (expect originality licenses of all pages)
@@ -850,7 +850,7 @@ Repo.&lt;b&gt;/%(bookname)s/&lt;/b&gt; index
 &lt;/head&gt;
 &lt;frameset cols="200,*"&gt;
 	&lt;frame id="side" name="side" src="./%(treeid)s.html"&gt;
-	&lt;frame id="main" name="main" src="./main.html"&gt;
+	&lt;frame id="main" name="main" src="./readme.html"&gt;
 &lt;/frameset&gt;
 
 &lt;/html&gt;
@@ -983,7 +983,7 @@ def exp_root_idx(expath, drdf):
     open("%s/tree/index.html"% expath, 'w').write(html)
     body = u"&lt;h1&gt;是也乎,(￣▽￣)&lt;h1/&gt;&lt;h2&gt;~ Sayeahooo!&lt;/h2&gt;"
     html = CF.HTM % locals()
-    open("%s/tree/main.html"% expath, 'w').write(html)
+    open("%s/tree/readme.html"% expath, 'w').write(html)
 
 </t>
 <t tx="zoomq.20140226204618.4737">def exp_sub_idx(expath, drdf, seqid):

@@ -70,7 +70,7 @@ class Borg():
     <li>Author: <a href="http://zoomquiet.io">ZoomQuiet.io</a> 
     (<a href="mailto:zoomquiet+io[AT]gmail.com">zoom.quiet</a>)
         </li>
-    <li>Tools: <a href="https://bitbucket.org/ZoomQuiet/scraptools">ZoomQuiet / scraptools — Bitbucket</a>
+    <li>Tools: <a href="https://github.com/ZoomQuiet/scrapbooktools">ZoomQuiet / scraptools — GitHub</a>
         </li>
     <li>Licenses: <a href="http://creativecommons.org/licenses/by-sa/2.5/cn/">CC(by-sa)2.5</a>
         (expect originality licenses of all pages)
@@ -99,7 +99,7 @@ class Borg():
     </head>
     <frameset cols="200,*">
     	<frame id="side" name="side" src="./%(treeid)s.html">
-    	<frame id="main" name="main" src="./main.html">
+    	<frame id="main" name="main" src="./readme.html">
     </frameset>
 
     </html>
@@ -208,7 +208,7 @@ def exp_root_idx(expath, drdf):
     open("%s/tree/index.html"% expath, 'w').write(html)
     body = u"<h1>是也乎,(￣▽￣)<h1/><h2>~ Sayeahooo!</h2>"
     html = CF.HTM % locals()
-    open("%s/tree/main.html"% expath, 'w').write(html)
+    open("%s/tree/readme.html"% expath, 'w').write(html)
 
 def exp_sub_idx(expath, drdf, seqid):
     rdf = drdf   #pickle.load(open(pkl, 'r'))
