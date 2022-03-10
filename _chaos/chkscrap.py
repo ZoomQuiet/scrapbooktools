@@ -101,10 +101,10 @@ def exp_level_idx(pathto):
     #print pathto, CF.RDF% pathto, os.path.basename(pathto)
     def start_element(name, attrs):
         #print 'Start element:', name, attrs
-        if "RDF:Seq" == name:
+        if name == "RDF:Seq":
             CF.IS_SEQ = 1
             CF.IS_DESC = 0
-            if "urn:scrapbook:root" == attrs['RDF:about']:
+            if attrs['RDF:about'] == "urn:scrapbook:root":
                 #print 'ROOT element:', name, attrs
                 CF.IS_ROOT = 1
                 CF.DICTRDF['ROOT']['id'] = attrs['RDF:about'].split(":")[-1]
@@ -116,14 +116,14 @@ def exp_level_idx(pathto):
                 CF.DICTRDF['SEQ'][CF.CRTID] = []
         else:
             CF.IS_SEQ = 0
-            if "RDF:li" == name:
+            if name == "RDF:li":
                 CF.IS_DESC = 0
                 CF.IS_LI = 1
                 if CF.IS_ROOT:
                     CF.DICTRDF['ROOT']['li'].append(attrs['RDF:resource'].split(":")[-1])
                 else:
                     CF.DICTRDF['SEQ'][CF.CRTID].append(attrs['RDF:resource'].split(":")[-1])
-            elif "RDF:Description" == name:
+            elif name == "RDF:Description":
                 CF.IS_DESC = 1
                 CF.IS_LI = 0
                 CF.CRTID = attrs['RDF:about'].split(":")[-1]
@@ -144,11 +144,8 @@ def exp_level_idx(pathto):
 
 
     def end_element(name):
-        if "RDF:Seq" == name:
-            if CF.IS_ROOT:
-                CF.IS_ROOT = 0
-            else:
-                pass
+        if name == "RDF:Seq" and CF.IS_ROOT:
+            CF.IS_ROOT = 0
     px = xml.parsers.expat.ParserCreate()
     px.StartElementHandler = start_element
     px.EndElementHandler = end_element
