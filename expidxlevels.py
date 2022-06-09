@@ -245,10 +245,10 @@ def exp_level_idx(pathto):
     print "%s/scrapbook.rdf"% pathto 
     def start_element(name, attrs):
         #print 'Start element:', name, attrs
-        if "RDF:Seq" == name:
+        if name == "RDF:Seq":
             CF.IS_SEQ = 1
             CF.IS_DESC = 0
-            if "urn:scrapbook:root" == attrs['RDF:about']:
+            if attrs['RDF:about'] == "urn:scrapbook:root":
                 #print 'ROOT element:', name, attrs
                 CF.IS_ROOT = 1
                 CF.DICTRDF['ROOT']['id'] = attrs['RDF:about'].split(":")[-1]
@@ -260,14 +260,14 @@ def exp_level_idx(pathto):
                 CF.DICTRDF['SEQ'][CF.CRTID] = []
         else:
             CF.IS_SEQ = 0
-            if "RDF:li" == name:
+            if name == "RDF:li":
                 CF.IS_DESC = 0
                 CF.IS_LI = 1
                 if CF.IS_ROOT:
                     CF.DICTRDF['ROOT']['li'].append(attrs['RDF:resource'].split(":")[-1])
                 else:
                     CF.DICTRDF['SEQ'][CF.CRTID].append(attrs['RDF:resource'].split(":")[-1])
-            elif "RDF:Description" == name:
+            elif name == "RDF:Description":
                 CF.IS_DESC = 1
                 CF.IS_LI = 0
                 CF.CRTID = attrs['RDF:about'].split(":")[-1]
@@ -288,11 +288,8 @@ def exp_level_idx(pathto):
 
 
     def end_element(name):
-        if "RDF:Seq" == name:
-            if CF.IS_ROOT:
-                CF.IS_ROOT = 0
-            else:
-                pass
+        if name == "RDF:Seq" and CF.IS_ROOT:
+            CF.IS_ROOT = 0
     px = xml.parsers.expat.ParserCreate()
     px.StartElementHandler = start_element
     px.EndElementHandler = end_element
@@ -384,44 +381,37 @@ def _uli_all_item(drdf, seq):
         for seqid in seq:
             if seqid in drdf['SEQ']:
                 #print seqid
-                if seqid not in drdf['DESC']:
-                    continue
-                else:
+                if seqid in drdf['DESC']:
                     yield '''<LI><a class="folder">
                     <img src="./folder.png" width="16" height="16" alt="">
                     %s</a><UL>''' % drdf['DESC'][seqid]['title']
-                    for ul in _uli_all_item(drdf, drdf['SEQ'][seqid]):
-                        yield ul
+                    yield from _uli_all_item(drdf, drdf['SEQ'][seqid])
                     yield "</UL></LI>"
             else:
-                for li in _uli_all_item(drdf, seqid):
-                    yield li
-    else:
-        if seq in drdf['SEQ']:
-            yield "<LI>%s<UL>" % drdf['DESC'][seq]['title']
-            for ul in _uli_all_item(drdf, drdf['SEQ'][seq]):
-                yield ul    #"</ul></li>"
-            yield "</UL></LI>"
-        else:
-            if seq in drdf['DESC']:
-                if 'folder' == drdf['DESC'][seq]['type']:
-                    yield '''<LI><a class="folder">
+                yield from _uli_all_item(drdf, seqid)
+    elif seq in drdf['SEQ']:
+        yield "<LI>%s<UL>" % drdf['DESC'][seq]['title']
+        yield from _uli_all_item(drdf, drdf['SEQ'][seq])
+        yield "</UL></LI>"
+    elif seq in drdf['DESC']:
+        if drdf['DESC'][seq]['type'] == 'folder':
+            yield '''<LI><a class="folder">
                     <img src="./folder.png" width="16" height="16" alt="">
                     %s</a><UL>''' % drdf['DESC'][seq]['title']
-                elif 'note' == drdf['DESC'][seq]['type']:
-                    yield '''<LI>
+        elif drdf['DESC'][seq]['type'] == 'note':
+            yield '''<LI>
                     <a href="../data/%s/index.html" target="main" class="item">
                     <img src="./treenote.png" width="16" height="16" alt="">
                     %s</a><UL>''' % (drdf['DESC'][seq]['id']
-                        ,drdf['DESC'][seq]['title'])
-                else:
-                    yield '''<LI>
+                ,drdf['DESC'][seq]['title'])
+        else:
+            yield '''<LI>
                     <a href="../data/%s/index.html" target="main" class="item">
                     <img src="./treeitem.png" width="16" height="16" alt="">
                     %s</a></LI>''' % (drdf['DESC'][seq]['id']
-                        ,drdf['DESC'][seq]['title'])
-            else:
-                yield "<HR/>"
+                ,drdf['DESC'][seq]['title'])
+    else:
+        yield "<HR/>"
 def _seq_info(rdf, seqid):
     exphtm = ""
     if seqid in rdf['SEQ']:
@@ -436,35 +426,34 @@ def _seq_info(rdf, seqid):
     return exphtm
 def _desc_info(rdf, rdfid, is_root=False):
     #print rdfid
-    if rdfid in rdf['DESC']:
-        itemtitle = rdf['DESC'][rdfid]['title']
-        tipid = rdf['DESC'][rdfid]['id']
-        if rdfid in rdf['ROOT']['li']:
-            if 'folder' == rdf['DESC'][rdfid]['type']:
-                return '<span id="rootitem"><b>{%s}</b></span>' % rdf['DESC'][rdfid]['title']
-            else:
-                return '''<span id="rootitem">
+    if rdfid not in rdf['DESC']:
+        #print "is NC:BookmarkSeparator"
+        return ""
+    itemtitle = rdf['DESC'][rdfid]['title']
+    tipid = rdf['DESC'][rdfid]['id']
+    if rdfid in rdf['ROOT']['li']:
+        if rdf['DESC'][rdfid]['type'] == 'folder':
+            return '<span id="rootitem"><b>{%s}</b></span>' % rdf['DESC'][rdfid]['title']
+        else:
+            return '''<span id="rootitem">
                 <b><a href="../data/%s/index.html">{%s}</a></b>
                 </span>''' % (rdf['DESC'][rdfid]['id']
-                    ,rdf['DESC'][rdfid]['title'])
-        elif 'folder' == rdf['DESC'][rdfid]['type']:
-            if is_root:
-                return '''<span id="rootitem">
+                ,rdf['DESC'][rdfid]['title'])
+    elif rdf['DESC'][rdfid]['type'] == 'folder':
+        if is_root:
+            return '''<span id="rootitem">
                 <a title="%(tipid)s" href="item%(tipid)s-frameset.html">
                 <b>[%(itemtitle)s]</b>
                 </a></span>'''% locals() 
-            else:
-                return '''<span id="item" class="hadsubitems">
+        else:
+            return '''<span id="item" class="hadsubitems">
                 <a title="%(tipid)s" href="item%(tipid)s-frameset.html">
                 [%(itemtitle)s]
-                </a></span>'''% locals() 
-        else:       
-            return '''<span id="item" class="idx-%(tipid)s">
+                </a></span>'''% locals()
+    else:       
+        return '''<span id="item" class="idx-%(tipid)s">
             ;<a href="../data/%(tipid)s/index.html" title="%(itemtitle)s" class="jqactshow">%(itemtitle)s</a>
             </span>'''% locals()
-    else:
-        #print "is NC:BookmarkSeparator"
-        return ""
 
 if __name__ == "__main__":
     if 2 != len(sys.argv):

@@ -262,10 +262,10 @@ def exp_level_idx(pathto):
     
     def start_element(name, attrs):
         #print 'Start element:', name, attrs
-        if "RDF:Seq" == name:
+        if name == "RDF:Seq":
             CF.IS_SEQ = 1
             CF.IS_DESC = 0
-            if "urn:scrapbook:root" == attrs['RDF:about']:
+            if attrs['RDF:about'] == "urn:scrapbook:root":
                 #print 'ROOT element:', name, attrs
                 CF.IS_ROOT = 1
                 CF.DICTRDF['ROOT']['id'] = attrs['RDF:about'].split(":")[-1]
@@ -277,14 +277,14 @@ def exp_level_idx(pathto):
                 CF.DICTRDF['SEQ'][CF.CRTID] = []
         else:
             CF.IS_SEQ = 0
-            if "RDF:li" == name:
+            if name == "RDF:li":
                 CF.IS_DESC = 0
                 CF.IS_LI = 1
                 if CF.IS_ROOT:
                     CF.DICTRDF['ROOT']['li'].append(attrs['RDF:resource'].split(":")[-1])
                 else:
                     CF.DICTRDF['SEQ'][CF.CRTID].append(attrs['RDF:resource'].split(":")[-1])
-            elif "RDF:Description" == name:
+            elif name == "RDF:Description":
                 CF.IS_DESC = 1
                 CF.IS_LI = 0
                 CF.CRTID = attrs['RDF:about'].split(":")[-1]
@@ -305,11 +305,8 @@ def exp_level_idx(pathto):
 
 
     def end_element(name):
-        if "RDF:Seq" == name:
-            if CF.IS_ROOT:
-                CF.IS_ROOT = 0
-            else:
-                pass
+        if name == "RDF:Seq" and CF.IS_ROOT:
+            CF.IS_ROOT = 0
     px = xml.parsers.expat.ParserCreate()
     px.StartElementHandler = start_element
     px.EndElementHandler = end_element
@@ -461,9 +458,9 @@ def _walk_rdf_tree(exp_txt, deepl, crt_node, XRDF):
         # DESC|NC
         crt_id = crt_node['@RDF:about']
     # 记录了包含目录以及其它所有有效的节点
-    _RIGHT_NODES.append(crt_id) 
+    _RIGHT_NODES.append(crt_id)
     # for recursion must test all cases
-    
+
     if crt_id in K2SEQ.keys():
         # means contents: note/line/page
         #_print_tree_node(deepl, crt_id, K2DESC)
@@ -473,33 +470,24 @@ def _walk_rdf_tree(exp_txt, deepl, crt_node, XRDF):
             类似的空目录情况....
             直接输出目录名就好
             """
-            #_print_tree_node(deepl, crt_id, K2DESC)
-            pass
+        elif len(K2SEQ[crt_id]['RDF:li']) == 1:
+            _walk_rdf_tree(exp_txt
+                , deepl+1
+                , K2SEQ[crt_id]['RDF:li']
+                , XRDF)
+            _RIGHT_NODES.append(K2SEQ[crt_id]['RDF:li']['@RDF:resource'])
+
         else:
-            if 1 == len(K2SEQ[crt_id]['RDF:li']):
+            #print type(K2SEQ[crt_id]['RDF:li'])
+            #print K2SEQ[crt_id]['RDF:li']
+            for li in K2SEQ[crt_id]['RDF:li']:
+                #print "K2SEQ[crt_id]>RDF:Li", li
                 _walk_rdf_tree(exp_txt
                     , deepl+1
-                    , K2SEQ[crt_id]['RDF:li']
+                    , li
                     , XRDF)
-                _RIGHT_NODES.append(K2SEQ[crt_id]['RDF:li']['@RDF:resource'])
-                
-            else:
-                #print type(K2SEQ[crt_id]['RDF:li'])
-                #print K2SEQ[crt_id]['RDF:li']
-                for li in K2SEQ[crt_id]['RDF:li']:
-                    #print "K2SEQ[crt_id]>RDF:Li", li
-                    _walk_rdf_tree(exp_txt
-                        , deepl+1
-                        , li
-                        , XRDF)
-                    _RIGHT_NODES.append(li['@RDF:resource'])
-                
-    else:
-        # crt_id in K2DESC.keys():
-        # means DESC
-        #_print_tree_node(deepl, crt_id, K2DESC)
-        pass
-            
+                _RIGHT_NODES.append(li['@RDF:resource'])
+
     return deepl+1, exp_txt
 
 

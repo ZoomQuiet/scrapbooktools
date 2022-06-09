@@ -64,53 +64,47 @@ def _replace_inc(subs,sroot,_inc):
                 , CF.PAGE
                 , p
                 , CF.AIM)
-        if os.path.exists(_aim):
-            _htm = open(_aim,'r').readlines()
-            print(_aim)
-            _exp = ''
-            isTAG0 = 0
-            isTAG1 = 0
-            noTAG = 0
-            for l in _htm:
-                if CF.TAG0 == l[:5]:
-                    #print('got>>>',CF.TAG0)
-                    isTAG0 = 1
-                    _exp += l
-                elif CF.TAG1 == l[:5]:
-                    #print('got<<<',CF.TAG1)
-                    isTAG1 = 1
-                    _exp += _inc
-                    _exp += l
-                elif CF.TAGb in l:
-                    #print('TAGb ~> ',l)
-                    if isTAG0 or isTAG1:
-                        pass
-                    else:
-                        noTAG = 1
-                        _exp += '\n%s\n'%CF.TAG0
-                        _exp += _inc
-                        _exp += '\n%s\n'%CF.TAG1
-                        _exp += l
-                else:
-                    if isTAG0:
-                        pass
-                    else:
-                        _exp += l
-
-            #print(_exp)
-            open(_aim,'w').write(_exp)
-
-
-
-
-
-
-
-
-
-        else:
+        if not os.path.exists(_aim):
             continue
-    
+
+        _htm = open(_aim,'r').readlines()
+        print(_aim)
+        _exp = ''
+        isTAG0 = 0
+        isTAG1 = 0
+        noTAG = 0
+        for l in _htm:
+            if CF.TAG0 == l[:5]:
+                #print('got>>>',CF.TAG0)
+                isTAG0 = 1
+                _exp += l
+            elif CF.TAG1 == l[:5]:
+                #print('got<<<',CF.TAG1)
+                isTAG1 = 1
+                _exp += _inc
+                _exp += l
+            elif CF.TAGb in l:
+                    #print('TAGb ~> ',l)
+                if not isTAG0 and not isTAG1:
+                    noTAG = 1
+                    _exp += '\n%s\n'%CF.TAG0
+                    _exp += _inc
+                    _exp += '\n%s\n'%CF.TAG1
+                    _exp += l
+            elif not isTAG0:
+                _exp += l
+
+        #print(_exp)
+        open(_aim,'w').write(_exp)
+
+
+
+
+
+
+
+
+
     return None
     
     
@@ -120,16 +114,14 @@ def _replace_inc(subs,sroot,_inc):
 
 def _page_walker(sroot):
     _pages = '%s/%s'%(sroot, CF.PAGE)
-    #print(_pages)
-    _subs = os.listdir(_pages)
     #print(len(_subs),_subs[0])
-    
-    return _subs
+
+    return os.listdir(_pages)
 
 if __name__ == "__main__":
     #cli(obj={})
 
-    if 2 != len(sys.argv):
+    if len(sys.argv) != 2:
         print("""替换所有 ScrapBook 页面缀文
     usage::
     $ python /path/2/append_ann.py /path/2/MyScrapBook/

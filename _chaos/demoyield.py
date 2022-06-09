@@ -22,21 +22,17 @@ DATA= {
 
 def _exp_all_item(drdf, seq, exp):
    if types.ListType is type(seq):
-       for seqid in seq:
-           if seqid in drdf['SEQ']:
-               yield "<li>%s</ui>" % drdf['DESC'][seqid]['title']
-               for x in _exp_all_item(drdf,drdf['SEQ'][seqid],exp):
-                   yield x
-           else:
-               for x in _exp_all_item(drdf,seqid,exp):
-                   yield x
+      for seqid in seq:
+         if seqid in drdf['SEQ']:
+            yield "<li>%s</ui>" % drdf['DESC'][seqid]['title']
+            yield from _exp_all_item(drdf,drdf['SEQ'][seqid],exp)
+         else:
+            yield from _exp_all_item(drdf,seqid,exp)
+   elif seq in drdf['SEQ']:
+      yield "<li>%s</ui>" % drdf['DESC'][seq]['title']
+      yield from _exp_all_item(drdf,drdf['SEQ'][seq],exp)
    else:
-       if seq in drdf['SEQ']:
-           yield "<li>%s</ui>" % drdf['DESC'][seq]['title']
-           for x in _exp_all_item(drdf,drdf['SEQ'][seq],exp):
-               yield x
-       else:
-           yield "<li>%s</li>" % drdf['DESC'][seq]['title']
+      yield "<li>%s</li>" % drdf['DESC'][seq]['title']
 
 if __name__ == '__main__':
    s = list(_exp_all_item(DATA, 'id1', ''))
