@@ -6,8 +6,8 @@ import os
 import sys
 # 解决写文件 'ascii' codec can't encode characters 问题
 # base http://blog.csdn.net/zuyi532/article/details/8851316
-reload(sys)  
-sys.setdefaultencoding('utf8')   
+#reload(sys)  
+#sys.setdefaultencoding('utf8')   
 import pickle
 import types
 import time
@@ -183,7 +183,7 @@ def run_time(func):
         start = time.time()
         result = func(*args)
         passtime = time.time() - start
-        print "\t\t%s() RUNed~ %.5f ms\n" % (func.__name__, passtime*1000)
+        print( "\t\t%s() RUNed~ %.5f ms\n" % (func.__name__, passtime*1000))
         return result
     return cal_time
 
@@ -201,11 +201,16 @@ def exp_root_idx(expath, drdf):
         else:
             htm += '<tr class="odd"><td>%s</td></tr>\n'% _seq_info(rdf, rootseq)
         count += exp_sub_idx(expath, rdf, rootseq)
-    print "collected pages == ", count
-    body = htm.encode('utf8')
+    print( "collected pages == ", count)
+    body = htm#.encode('utf8')
+    print(body)
     html = CF.HTM % locals()
     #open("%s/tree/root-idx.html"% expath, 'w').write(html.encode('utf8'))
-    open("%s/tree/index.html"% expath, 'w').write(html)
+    #open("%s/tree/index.html"% expath, 'w').write(html)
+    with open("%s/tree/index.html"% expath, 'w') as f:
+        #f.write(html_str)
+        f.write(html)
+
     body = u"<h1>是也乎,(￣▽￣)<h1/><h2>~ Sayeahooo!</h2>"
     html = CF.HTM % locals()
     open("%s/tree/readme.html"% expath, 'w').write(html)
@@ -228,13 +233,24 @@ def exp_if_tree(expath, drdf, crtseq, seqid):
     treeli = ""
     ulis = list(_uli_all_item(rdf, seqid))
     treeli = "\n".join(ulis)
+
     upback = "item%s-idx.html" % drdf['DESC'][crtseq]['id']
     html = CF.IDX % locals()
-    open("%s/tree/%s-tree.html"% (expath, seqid),'w').write(html.encode('utf8'))
+    #open("%s/tree/%s-tree.html"% (expath, seqid),'w').write(html.encode('utf8'))
+    #html_bytes = html.encode('utf8')  # 这会将字符串编码为字节串
+    #html_str = html_bytes.decode('utf8')  # 然后再将字节串解码回
+    # 确保以文本模式打开文件
+    with open("%s/tree/%s-tree.html" % (expath, seqid), 'wb') as f:
+        #f.write(html_str)
+        f.write(html.encode('utf8'))
+
     treeid = "%s-tree" % seqid
     seqlevel = drdf['DESC'][seqid]['title']
     html = CF.FSET % locals()
-    open("%s/tree/%s-frameset.html"% (expath, seqid),'w').write(html.encode('utf8'))
+    #open("%s/tree/%s-frameset.html"% (expath, seqid),'w').write(html.encode('utf8'))
+    with open("%s/tree/%s-frameset.html"% (expath, seqid), 'wb') as f:
+        f.write(html.encode('utf8'))
+
     return len(ulis)
 
 @run_time
@@ -242,7 +258,7 @@ def exp_level_idx(pathto):
     '''解析现有 rdf 为 py 数据对象来快速理解/清查
     '''
     #print pathto, CF.RDF% pathto, os.path.basename(pathto)
-    print "%s/scrapbook.rdf"% pathto 
+    print( "%s/scrapbook.rdf"% pathto )
     def start_element(name, attrs):
         #print 'Start element:', name, attrs
         if "RDF:Seq" == name:
@@ -318,10 +334,10 @@ def exp_level_idx(pathto):
 
 
     '''
-    print doc.keys()
-    print "RDF:Seq\t\t\t", len(doc['RDF:RDF']['RDF:Seq'])
-    print "RDF:Description\t\t", len(doc['RDF:RDF']['RDF:Description'])
-    print "NC:BookmarkSeparator\t", len(doc['RDF:RDF']['NC:BookmarkSeparator'])
+    print( doc.keys())
+    print( "RDF:Seq\t\t\t", len(doc['RDF:RDF']['RDF:Seq']))
+    print( "RDF:Description\t\t", len(doc['RDF:RDF']['RDF:Description']))
+    print( "NC:BookmarkSeparator\t", len(doc['RDF:RDF']['NC:BookmarkSeparator']))
     XRDF = {'doc':doc
         , 'k2seq':{}
         , 'k2desc':{}
@@ -329,7 +345,7 @@ def exp_level_idx(pathto):
         , 'root':[] #seq['RDF:li']
         }
     # re-index for KV points
-    print "keys doc['RDF:RDF']\n\t", doc['RDF:RDF'].keys()
+    print( "keys doc['RDF:RDF']\n\t", doc['RDF:RDF'].keys())
     for seq in doc['RDF:RDF']['RDF:Seq']:
         if "urn:scrapbook:root" == seq['@RDF:about']:
             XRDF['root'] = seq
@@ -341,7 +357,7 @@ def exp_level_idx(pathto):
         XRDF['k2nc'][nc['@RDF:about']] = nc 
 
     output = open(CF.PKL % os.path.basename(pathto) , 'wb')
-    print output
+    print( output)
     #print type(obj.RDF_RDF)
     pickle.dump(XRDF, output)
     return XRDF
@@ -351,13 +367,13 @@ def exp_level_idx(pathto):
     return None   
     
     obj = untangle.parse("%s/scrapbook.rdf"% pathto)
-    print dir(obj.RDF_RDF.RDF_Description)
-    print "RDF:Seq\t\t\t", len(obj.RDF_RDF.RDF_Seq)
-    print "RDF_Description\t\t", len(obj.RDF_RDF.RDF_Description)
-    print "NC:BookmarkSeparator\t", len(obj.RDF_RDF.NC_BookmarkSeparator)
+    print( dir(obj.RDF_RDF.RDF_Description))
+    print( "RDF:Seq\t\t\t", len(obj.RDF_RDF.RDF_Seq))
+    print( "RDF_Description\t\t", len(obj.RDF_RDF.RDF_Description))
+    print( "NC:BookmarkSeparator\t", len(obj.RDF_RDF.NC_BookmarkSeparator))
 
     output = open(CF.PKL % os.path.basename(pathto) , 'wb')
-    print output
+    print( output)
     #print type(obj.RDF_RDF)
     #pickle.dump(obj.RDF_RDF, output)
     return obj.RDF_RDF
@@ -380,7 +396,8 @@ def exp_level_idx(pathto):
     
 '''
 def _uli_all_item(drdf, seq):
-    if types.ListType is type(seq):
+    #if types.ListType is type(seq):
+    if isinstance(seq, list):
         for seqid in seq:
             if seqid in drdf['SEQ']:
                 #print seqid
@@ -422,6 +439,7 @@ def _uli_all_item(drdf, seq):
                         ,drdf['DESC'][seq]['title'])
             else:
                 yield "<HR/>"
+
 def _seq_info(rdf, seqid):
     exphtm = ""
     if seqid in rdf['SEQ']:
@@ -468,11 +486,11 @@ def _desc_info(rdf, rdfid, is_root=False):
 
 if __name__ == "__main__":
     if 2 != len(sys.argv):
-        print """ %s 将指定ScrapBook 的输出树图分解为一批小索引 usage::
-$ python /path/2/expidxlevels.py /path/2/MyScrapBook/
-            |                       +- ScrapBook 收藏入口目录
-            +- 指出脚本自身
-        """ % VERSION
+        print( """ %s 将指定ScrapBook 的输出树图分解为一批小索引 usage::
+        $ python /path/2/expidxlevels.py /path/2/MyScrapBook/
+                    |                       +- ScrapBook 收藏入口目录
+                    +- 指出脚本自身
+                """ % VERSION)
     else:
         TPATH = os.path.dirname(os.path.abspath(sys.argv[0]))
         MYBOOK = os.path.abspath(sys.argv[1])
